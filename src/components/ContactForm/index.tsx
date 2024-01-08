@@ -8,6 +8,7 @@ import PositionSVG from '../SVG/contactSVG/PositionSVG';
 import emailjs from '@emailjs/browser';
 import EmailAlert from '../Alerts/EmailAlert';
 import Image from 'next/image';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const schema = z.object({
   email: z.string().email(),
@@ -38,7 +39,6 @@ const ContactForm = () => {
     if (
       !process.env.NEXT_PUBLIC_EMAILJS_ServiceID ||
       !process.env.NEXT_PUBLIC_EMAILJS_TemplateID ||
-      !process.env.NEXT_PUBLIC_reCAPTCHA_site_key ||
       !process.env.NEXT_PUBLIC_EMAILJS_PublicKey
     )
       return;
@@ -76,6 +76,10 @@ const ContactForm = () => {
       clearTimeout(disableContactAlert);
     };
   }, [showAlert.successAlert, showAlert.failureAlert]);
+
+  if (!process.env.NEXT_PUBLIC_reCAPTCHA_site_key) {
+    return;
+  }
 
   return (
     <div className="grid grid-col-1 md:grid-cols-2 gap-4">
@@ -182,10 +186,16 @@ const ContactForm = () => {
               </div>
             </div>
             <div className="relative sm:col-end-6 sm:col-span-2 sm:ml-5 mx-5 sm:mx-0">
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_reCAPTCHA_site_key}
+                onChange={(value) => {
+                  // Handle reCAPTCHA value change if needed
+                  console.log('reCAPTCHA value changed:', value);
+                }}
+              />
               <button
                 type="submit"
-                data-sitekey={process.env.NEXT_PUBLIC_reCAPTCHA_site_key}
-                className="g-recaptcha text-xs md:text-base bg-[--primary-color]
+                className="text-xs md:text-base bg-[--primary-color]
              text-white rounded-md hover:border-black filter drop-shadow-lg 
              hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium w-full p-3"
               >
