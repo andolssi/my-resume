@@ -187,10 +187,12 @@ const ContactForm = () => {
             </div>
             <div className="relative sm:col-end-6 sm:col-span-2 sm:ml-5 mx-5 sm:mx-0">
               <ReCAPTCHA
+                size="invisible"
                 sitekey={process.env.NEXT_PUBLIC_reCAPTCHA_site_key}
-                onChange={(value) => {
-                  // Handle reCAPTCHA value change if needed
-                  console.log('reCAPTCHA value changed:', value);
+                onLoad={() => {
+                  // Handle the completion of the invisible reCAPTCHA
+                  console.log('Invisible reCAPTCHA loaded and completed.');
+                  // You might trigger additional actions or enable form submission here
                 }}
               />
               <button
