@@ -6,22 +6,36 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --no-cache"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
+    "@hookform/resolvers": "^3.3.4",
+    "@types/react-slick": "^0.23.13",
+    "embla-carousel-autoplay": "^8.0.0-rc18",
+    "embla-carousel-react": "^8.0.0-rc18",
+    "next": "14.0.4",
+    "prettier-plugin-tailwind": "^2.2.12",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.4"
+    "react-hook-form": "^7.49.2",
+    "react-particles": "^2.12.2",
+    "react-slick": "^0.29.0",
+    "tsparticles": "^3.0.3",
+    "tsparticles-slim": "^2.12.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4"
+    "eslint-config-next": "14.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "postcss": "^8",
+    "prettier": "3.1.1",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   }
 }
