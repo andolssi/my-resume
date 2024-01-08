@@ -38,6 +38,7 @@ const ContactForm = () => {
     if (
       !process.env.NEXT_PUBLIC_EMAILJS_ServiceID ||
       !process.env.NEXT_PUBLIC_EMAILJS_TemplateID ||
+      !process.env.NEXT_PUBLIC_reCAPTCHA_site_key ||
       !process.env.NEXT_PUBLIC_EMAILJS_PublicKey
     )
       return;
@@ -85,7 +86,7 @@ const ContactForm = () => {
           </div>
           <div className="w-full my-4 mx-2">
             <h3>Call me</h3>
-            <h3 className="font-normal">+212 3321 321 15 </h3>
+            <h3 className="font-normal">+216 52 841 633</h3>
           </div>
         </div>
         <div className="flex flex-row  justify-start items-center">
@@ -183,7 +184,8 @@ const ContactForm = () => {
             <div className="relative sm:col-end-6 sm:col-span-2 sm:ml-5 mx-5 sm:mx-0">
               <button
                 type="submit"
-                className="text-xs md:text-base bg-[--primary-color]
+                data-sitekey={process.env.NEXT_PUBLIC_reCAPTCHA_site_key}
+                className="g-recaptcha text-xs md:text-base bg-[--primary-color]
              text-white rounded-md hover:border-black filter drop-shadow-lg 
              hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium w-full p-3"
               >
