@@ -46,6 +46,8 @@ const LandingPage = ({
               width={454.8}
               height={396.2}
               priority
+              placeholder="blur"
+              blurDataURL="/Houssem Eddine Andolssi with design without background light.png"
             />
           </div>
         </div>
