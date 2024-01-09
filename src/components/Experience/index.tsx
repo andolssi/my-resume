@@ -10,12 +10,11 @@ const Experience = () => {
         <div className="grid grid-cols-1 justify-items-center w-full gap-4">
           <div className="relative w-full flex justify-center">
             <Image
-              className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert object-fill filter drop-shadow-lg max-w-full h-auto w-1/12 rounded-md"
+              className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto w-1/12 rounded-md"
               src="/edonec-logo.png"
               alt="Houssem Eddine Andolsi"
               width={50}
               height={50}
-              priority
               sizes="500px"
             />
           </div>
