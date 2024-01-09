@@ -139,10 +139,10 @@ const ContactForm = () => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)} ref={form}>
         <div className="border-b border-gray-900/10 pb-12 w-full px-3 sm:px-0">
-          <h2 className="text-xl font-medium leading-7 text-gray-900">
+          <h2 className="text-xl font-medium leading-7 text-gray-900 dark:text-gray-200">
             Get In <span className="text-[--primary-color]">Touch</span>
           </h2>
-          <p className="mt-1 text-sm leading-6 text-gray-600">
+          <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-200">
             Use a permanent address where you can receive mail.
           </p>
 
@@ -164,7 +164,7 @@ const ContactForm = () => {
                   className="block w-full rounded-md border-[1px] ring-0 py-1.5 px-1 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm m-1">{`${errors.email.message}`}</p>
+                  <p className="text-red-500 dark:text-red-300 text-sm m-1">{`${errors.email.message}`}</p>
                 )}
               </div>
             </div>
@@ -186,7 +186,7 @@ const ContactForm = () => {
                   className="block w-full rounded-md border-[1px] ring-0 py-1.5 px-1 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
                 />
                 {errors.phone && (
-                  <p className="text-red-500 text-sm m-1">{`${errors.phone.message}`}</p>
+                  <p className="text-red-500 dark:text-red-300 text-sm m-1">{`${errors.phone.message}`}</p>
                 )}
               </div>
             </div>
@@ -206,7 +206,7 @@ const ContactForm = () => {
                   className="block w-full rounded-md border-[1px] ring-0 py-1.5 px-1 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6 min-h-36"
                 />
                 {errors.message && (
-                  <p className="text-red-500 text-sm m-1">{`${errors.message.message}`}</p>
+                  <p className="text-red-500 dark:text-red-300 text-sm m-1">{`${errors.message.message}`}</p>
                 )}
               </div>
             </div>
@@ -233,7 +233,7 @@ const ContactForm = () => {
                 Submit
               </button>
               <Image
-                className="hidden sm:block absolute top-0 right-full opacity-55 dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert object-fill filter drop-shadow-lg max-w-full w-auto h-full"
+                className="hidden sm:block absolute top-0 right-full opacity-55 dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full w-auto h-full"
                 src="/flesh-website-decoration.png"
                 alt="Houssem Eddine Andolsi"
                 width={50}

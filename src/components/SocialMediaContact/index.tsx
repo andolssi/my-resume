@@ -19,11 +19,11 @@ const SocialMediaContact = () => {
     <div className="fixed right-0 top-1/2 translate-y-[-50%] rounded-2xl z-20">
       <div className="w-full z-20 flex flex-col items-center justify-end">
         <div>
-          <p className="rotate-90 text-sm lg:text-lg text-[--primary-color] font-light translate-y-[-150%]">
+          <p className="rotate-90 text-sm lg:text-lg text-[--primary-color] dark:text-slate-200 font-light translate-y-[-150%]">
             follow me
           </p>
         </div>
-        <div className="-ml-[1px] w-[1px] h-[5rem] bg-[--primary-color]" />
+        <div className="-ml-[1px] w-[1px] h-[5rem] bg-[--primary-color] dark:bg-slate-200" />
         <Links />
       </div>
     </div>

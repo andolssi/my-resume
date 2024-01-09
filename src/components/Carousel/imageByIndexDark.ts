@@ -1,11 +1,11 @@
 
-export const logoLinks: string[] = [
-    "/logos/mongoDB-logo-light-theme.png",
-    "/logos/express-logo-light-theme.png",
+export const darkLogoLinks: string[] = [
+    "/logos/mongoDB-logo-dark-theme.png",
+    "/logos/express-logo-dark-theme.png",
     "/logos/react-logo.png",
-    "/logos/nodejs-logo-light-theme.png",
+    "/logos/nodejs-logo-dark-theme.png",
     "/logos/Typescript_logo_2020.svg.png",
-    "/logos/nextjs-logo-light-theme.png",
+    "/logos/nextjs-logo-dark-theme.png",
     "/logos/TanStack-Query -logo.png",
     "/logos/react-hook-form-logo-light-theme.png",
     "/logos/jest-logo.png",
@@ -13,17 +13,17 @@ export const logoLinks: string[] = [
     "/logos/javascript-logo.png",
     "/logos/css-logo.png",
     "/logos/html-logo.png",
-    "/logos/git-logo-light-theme.png",
-    "/logos/styleX-logo-light-theme.png",
+    "/logos/git-logo-dark-theme.png",
+    "/logos/styleX-logo-dark-theme.png",
     "/logos/tailwind-css-logo.png",
     "/logos/redux-logo.png",
     "/logos/zod-logo-light-theme.png",
 
 ]
 
-const imageByIndex = (index: number): string => {
+const imageByIndexDark = (index: number): string => {
 
-    return logoLinks[index % logoLinks.length]
+    return darkLogoLinks[index % darkLogoLinks.length]
 }
 
-export default imageByIndex
+export default imageByIndexDark

@@ -1,6 +1,6 @@
 'use client';
 import NavbarMenu from '@/components/NavbarMenu';
-import ParticlesTest from '@/components/ParticlesTest';
+import ParticlesTest from '@/components/ParticlesComponent';
 import SocialMediaContact from '@/components/SocialMediaContact';
 import ProjectCards from '@/components/ProjectCards';
 import Carousel from '@/components/Carousel';

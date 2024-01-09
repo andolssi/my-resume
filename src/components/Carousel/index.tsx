@@ -1,8 +1,10 @@
-import React from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay, { AutoplayOptionsType } from "embla-carousel-autoplay";
-import imageByIndex from "./imageByIndex";
-import Image from "next/image";
+import React from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay, { AutoplayOptionsType } from 'embla-carousel-autoplay';
+import imageByIndex from './imageByIndex';
+import Image from 'next/image';
+import useThemePreference from '@/helpers/useThemePreference';
+import imageByIndexDark from './imageByIndexDark';
 
 type PropType = {
   slides: number[];
@@ -10,6 +12,7 @@ type PropType = {
 };
 
 const Carousel: React.FC<PropType> = (props) => {
+  const { theme } = useThemePreference();
   const { slides, options } = props;
   const [emblaRef] = useEmblaCarousel(options, [Autoplay()]);
 
@@ -24,10 +27,17 @@ const Carousel: React.FC<PropType> = (props) => {
               </div>
               <Image
                 className="embla__slide__img"
-                src={imageByIndex(index)}
-                alt="Your alt text"
+                src={
+                  theme === 'dark'
+                    ? imageByIndexDark(index)
+                    : imageByIndex(index)
+                }
+                alt="logo"
                 width={100}
                 height={100}
+                sizes="(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw"
               />
             </div>
           ))}

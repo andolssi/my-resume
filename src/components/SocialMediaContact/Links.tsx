@@ -24,7 +24,7 @@ const Links = ({
         <Link
           target="_blank"
           href={socialMediaLinks.linkedInLink}
-          className="fill-[--primary-color] hover:fill-[--secondary-color]"
+          className="fill-[--primary-color]  dark:fill-slate-200  dark:hover:fill-[--primary-color] hover:fill-[--secondary-color]"
         >
           <LinkedInSVG width={12 * width} height={12 * width} />
         </Link>
@@ -33,7 +33,7 @@ const Links = ({
         <Link
           target="_blank"
           href={socialMediaLinks.githubLink}
-          className="fill-[--primary-color] hover:fill-[--secondary-color]"
+          className="fill-[--primary-color]  dark:fill-slate-200  dark:hover:fill-[--primary-color] hover:fill-[--secondary-color]"
         >
           <GithubSVG width={13 * width} height={13 * width} />
         </Link>
@@ -42,7 +42,7 @@ const Links = ({
         <Link
           target="_blank"
           href={socialMediaLinks.facebookLink}
-          className="fill-[--primary-color] hover:fill-[--secondary-color]"
+          className="fill-[--primary-color]  dark:fill-slate-200  dark:hover:fill-[--primary-color] hover:fill-[--secondary-color]"
         >
           <FacebookSVG width={12 * width} height={12 * width} />
         </Link>

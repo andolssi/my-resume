@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${quicksand.variable} ${source_Code_Pro.variable} font-sans`}
+        className={`${quicksand.variable} ${source_Code_Pro.variable} font-sans dark:bg-slate-800`}
       >
         <SocialMediaContact />
         {children}

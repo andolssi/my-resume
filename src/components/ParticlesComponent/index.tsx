@@ -1,10 +1,12 @@
-import { useCallback } from "react";
-import type { Container, Engine } from "tsparticles-engine";
-import Particles from "react-particles";
+import { useCallback } from 'react';
+import type { Container, Engine } from 'tsparticles-engine';
+import Particles from 'react-particles';
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
+import { loadSlim } from 'tsparticles-slim'; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
+import useThemePreference from '@/helpers/useThemePreference';
 
-const ParticlesTest = () => {
+const ParticlesComponent = () => {
+  const { theme } = useThemePreference();
   const particlesInit = useCallback(async (engine: Engine) => {
     console.log(engine);
 
@@ -19,7 +21,7 @@ const ParticlesTest = () => {
     async (container: Container | undefined) => {
       await console.log(container);
     },
-    []
+    [],
   );
   return (
     <Particles
@@ -33,11 +35,11 @@ const ParticlesTest = () => {
           events: {
             onClick: {
               enable: true,
-              mode: "push",
+              mode: 'push',
             },
             onHover: {
               enable: true,
-              mode: "repulse",
+              mode: 'repulse',
             },
             resize: true,
           },
@@ -53,20 +55,20 @@ const ParticlesTest = () => {
         },
         particles: {
           color: {
-            value: "#ffba71",
+            value: theme === 'dark' ? '#526F9B' : '#ffba71',
           },
           links: {
-            color: "#ffba71",
+            color: theme === 'dark' ? '#526F9B' : '#ffba71',
             distance: 150,
             enable: true,
             opacity: 0.5,
             width: 1,
           },
           move: {
-            direction: "none",
+            direction: 'none',
             enable: true,
             outModes: {
-              default: "bounce",
+              default: 'bounce',
             },
             random: false,
             speed: 1.5,
@@ -83,7 +85,7 @@ const ParticlesTest = () => {
             value: 0.4,
           },
           shape: {
-            type: "circle",
+            type: 'circle',
           },
           size: {
             value: { min: 0.01, max: 3 },
@@ -95,4 +97,4 @@ const ParticlesTest = () => {
   );
 };
 
-export default ParticlesTest;
+export default ParticlesComponent;

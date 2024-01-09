@@ -85,11 +85,11 @@ const NavbarMenu = ({
   };
 
   return (
-    <div className="z-30 w-full fixed backdrop-blur-md bg-white/30 sm:h-auto h-[3.75rem]">
+    <div className="z-30 w-full fixed backdrop-blur-md bg-white/30 sm:h-auto h-[3.75rem] dark:bg-white/15">
       <button
         type="button"
-        className="fill-[--secondary-color] hover:fill-[--primary-color] p-2 m-4 rounded-lg ml-8 absolute top-0 left-0 sm:hidden cursor-pointer transition duration-500 ease-in-out 
-        hover:-translate-y-1 hover:scale-105 z-40 hover:bg-white"
+        className="fill-[--secondary-color] hover:fill-[--primary-color]  dark:fill-slate-200 dark:hover:fill-white p-2 m-4 rounded-lg ml-8 absolute top-0 left-0 sm:hidden cursor-pointer transition duration-500 ease-in-out 
+        hover:-translate-y-1 hover:scale-105 z-40 hover:bg-white dark:hover:bg-slate-800"
         onClick={() => setIsMobile(!isMobile)}
       >
         <MenuSVG />
@@ -111,7 +111,7 @@ const NavbarMenu = ({
             className={` ${
               currentIndex === 0
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
-                : 'text-[--secondary-color] hover:text-[--primary-color]'
+                : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200 '
             } font-medium text-xs sm:text-sm`}
             onClick={() => scrollToIndex(0)}
           >
@@ -127,7 +127,7 @@ const NavbarMenu = ({
             className={` ${
               currentIndex === 1
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
-                : 'text-[--secondary-color] hover:text-[--primary-color]'
+                : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
             } font-medium text-xs sm:text-sm`}
             onClick={() => scrollToIndex(1)}
           >
@@ -143,7 +143,7 @@ const NavbarMenu = ({
             className={` ${
               currentIndex === 2
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
-                : 'text-[--secondary-color] hover:text-[--primary-color]'
+                : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
             } font-medium text-xs sm:text-sm`}
             onClick={() => scrollToIndex(2)}
           >
@@ -159,7 +159,7 @@ const NavbarMenu = ({
             className={` ${
               currentIndex === 3
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
-                : 'text-[--secondary-color] hover:text-[--primary-color]'
+                : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
             } font-medium text-xs sm:text-sm`}
             onClick={() => scrollToIndex(3)}
           >
@@ -174,8 +174,8 @@ const NavbarMenu = ({
             type="button"
             className={` ${
               currentIndex === 4
-                ? 'text-[--primary-color] hover:text-[--primary-color]'
-                : 'text-[--secondary-color] hover:text-[--primary-color]'
+                ? 'text-[--primary-color] hover:text-[--primary-color]  dark:text-slate-200  dark:hove:text-white'
+                : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
             } font-medium text-xs sm:text-sm`}
             onClick={() => scrollToIndex(4)}
           >
