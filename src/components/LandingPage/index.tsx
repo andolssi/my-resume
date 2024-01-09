@@ -31,7 +31,7 @@ const LandingPage = ({
               className={`${
                 theme === 'dark' ? 'hidden' : ''
               } "relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full md:max-w-md sm:max-w-md h-auto"`}
-              src="/Houssem Eddine Andolssi with design without background light.png"
+              src="/Houssem-Eddine-Andolssi-light.webp"
               alt="Houssem Eddine Andolsi"
               width={454.8}
               height={396.2}
@@ -41,13 +41,13 @@ const LandingPage = ({
               className={`${
                 theme === 'dark' ? '' : 'hidden'
               } "relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full md:max-w-md sm:max-w-md h-auto"`}
-              src="/Houssem Eddine Andolssi with design without background dark.png"
+              src="/Houssem-Eddine-Andolssi-Dark.webp"
               alt="Houssem Eddine Andolsi"
               width={454.8}
               height={396.2}
               loading="lazy"
               placeholder="blur"
-              blurDataURL="/Houssem Eddine Andolssi with design without background light.png"
+              blurDataURL="/Houssem-Eddine-Andolssi-light.webp"
             />
           </div>
         </div>
