@@ -12,6 +12,7 @@
     "@emailjs/browser": "^3.11.0",
     "@hookform/resolvers": "^3.3.4",
     "@types/react-google-recaptcha": "^2.1.8",
+    "@vercel/analytics": "^1.1.1",
     "embla-carousel-autoplay": "^8.0.0-rc18",
     "embla-carousel-react": "^8.0.0-rc18",
     "next": "14.0.4",
