@@ -45,7 +45,7 @@ const LandingPage = ({
               alt="Houssem Eddine Andolsi"
               width={454.8}
               height={396.2}
-              priority
+              loading="lazy"
               placeholder="blur"
               blurDataURL="/Houssem Eddine Andolssi with design without background light.png"
             />

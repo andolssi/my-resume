@@ -40,6 +40,7 @@ const Carousel: React.FC<PropType> = (props) => {
                 33vw"
                 placeholder="blur"
                 blurDataURL="/logos/logo-Placeholder.png"
+                loading="lazy"
               />
             </div>
           ))}
