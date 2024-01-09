@@ -1,7 +1,7 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldValues, useForm, SubmitHandler } from 'react-hook-form';
 import EmailSVG from '../SVG/contactSVG/EmailSVG';
 import PhoneSVG from '../SVG/contactSVG/PhoneSVG';
 import PositionSVG from '../SVG/contactSVG/PositionSVG';
@@ -16,8 +16,17 @@ const schema = z.object({
   message: z.string().min(8),
 });
 
+interface FormData extends FieldValues {
+  email: string;
+  phone: string;
+  message: string;
+  'g-recaptcha-response'?: string;
+}
+
 const ContactForm = () => {
   const form = useRef(null);
+  const reCaptchaRef = useRef<ReCAPTCHA>(null);
+  const onChangeRef = useRef<((token: string | null) => void) | null>(null);
   const [showAlert, setShowAlert] = useState<{
     successAlert: boolean;
     failureAlert: boolean;
@@ -31,36 +40,52 @@ const ContactForm = () => {
     reset,
     register,
     formState: { errors },
-  } = useForm<z.infer<typeof schema>>({
+  } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: FieldValues) => {
-    if (
-      !process.env.NEXT_PUBLIC_EMAILJS_ServiceID ||
-      !process.env.NEXT_PUBLIC_EMAILJS_TemplateID ||
-      !process.env.NEXT_PUBLIC_EMAILJS_PublicKey
-    )
-      return;
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const recaptchaToken = await new Promise<string | null>((resolve) => {
+        reCaptchaRef.current?.execute();
+        onChangeRef.current = resolve;
+      });
 
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_ServiceID,
-        process.env.NEXT_PUBLIC_EMAILJS_TemplateID,
-        (form as unknown as MutableRefObject<HTMLFormElement>).current,
-        process.env.NEXT_PUBLIC_EMAILJS_PublicKey,
+      if (!recaptchaToken) {
+        console.error('reCAPTCHA token not available');
+        return;
+      }
+
+      data['g-recaptcha-response'] = recaptchaToken;
+
+      if (
+        !process.env.NEXT_PUBLIC_EMAILJS_ServiceID ||
+        !process.env.NEXT_PUBLIC_EMAILJS_TemplateID ||
+        !process.env.NEXT_PUBLIC_EMAILJS_PublicKey
       )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setShowAlert((prev) => ({ ...prev, successAlert: true }));
-          reset();
-        },
-        (error) => {
-          console.log(error.text);
-          setShowAlert((prev) => ({ ...prev, failureAlert: true }));
-        },
-      );
+        return;
+
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_EMAILJS_ServiceID,
+          process.env.NEXT_PUBLIC_EMAILJS_TemplateID,
+          (form as unknown as MutableRefObject<HTMLFormElement>).current,
+          process.env.NEXT_PUBLIC_EMAILJS_PublicKey,
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            setShowAlert((prev) => ({ ...prev, successAlert: true }));
+            reset();
+          },
+          (error) => {
+            console.log(error.text);
+            setShowAlert((prev) => ({ ...prev, failureAlert: true }));
+          },
+        );
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   useEffect(() => {
@@ -108,7 +133,7 @@ const ContactForm = () => {
           </div>
           <div className="w-full my-4 mx-2">
             <h3>Adress</h3>
-            <h3 className="font-normal">Dubai ....</h3>
+            <h3 className="font-normal">Dubai, United Arab Emirates</h3>
           </div>
         </div>
       </div>
@@ -188,11 +213,15 @@ const ContactForm = () => {
             <div className="relative sm:col-end-6 sm:col-span-2 sm:ml-5 mx-5 sm:mx-0">
               <ReCAPTCHA
                 size="invisible"
+                ref={reCaptchaRef}
+                onChange={(token) => {
+                  if (onChangeRef.current) {
+                    onChangeRef.current(token);
+                  }
+                }}
                 sitekey={process.env.NEXT_PUBLIC_reCAPTCHA_site_key}
-                onLoad={() => {
-                  // Handle the completion of the invisible reCAPTCHA
-                  console.log('Invisible reCAPTCHA loaded and completed.');
-                  // You might trigger additional actions or enable form submission here
+                onError={(err) => {
+                  console.error('reCAPTCHA error:', err);
                 }}
               />
               <button
