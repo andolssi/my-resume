@@ -150,7 +150,7 @@ const ContactForm = () => {
             <div className="sm:col-span-3">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
               >
                 Email address
               </label>
@@ -172,7 +172,7 @@ const ContactForm = () => {
             <div className="sm:col-span-3">
               <label
                 htmlFor="phone"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
               >
                 Phone number
               </label>
@@ -194,7 +194,7 @@ const ContactForm = () => {
             <div className="col-span-full">
               <label
                 htmlFor="message"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
               >
                 Message
               </label>
