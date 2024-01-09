@@ -10,7 +10,7 @@ const AboutMeCard = ({ handleContactMe }: { handleContactMe: () => void }) => {
         <div className="relative p-3 m-3 md:px-5 px-10 w-full flex justify-center">
           <Image
             className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto"
-            src="/mern-dev-img-color-adjusted.png"
+            src="/mern-dev-img-color-adjusted.webp"
             alt="Houssem Eddine Andolsi"
             width={444}
             height={434}
