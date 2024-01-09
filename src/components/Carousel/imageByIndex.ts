@@ -10,7 +10,7 @@ export const logoLinks: string[] = [
     "/logos/react-hook-form-logo-light-theme.png",
     "/logos/jest-logo.png",
     "/logos/bootstrap-logo.png",
-    "/logos/javascript-logo.png",
+    "/logos/JavaScript-logo.png",
     "/logos/css-logo.png",
     "/logos/html-logo.png",
     "/logos/git-logo-light-theme.png",
