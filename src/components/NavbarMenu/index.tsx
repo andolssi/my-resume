@@ -174,7 +174,7 @@ const NavbarMenu = ({
             type="button"
             className={` ${
               currentIndex === 4
-                ? 'text-[--primary-color] hover:text-[--primary-color]  dark:text-slate-200  dark:hove:text-white'
+                ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
             } font-medium text-xs sm:text-sm`}
             onClick={() => scrollToIndex(4)}
