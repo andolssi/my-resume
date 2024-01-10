@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+
 const Experience = () => {
   return (
     <>
@@ -7,7 +8,7 @@ const Experience = () => {
         Experience
       </h1>
       <div className="relative flex flex-col mx-auto max-w-5xl w-[85%] sm:w-full border-[1px] p-3 lg:p-8 rounded-lg shadow-sm">
-        <div className="grid grid-cols-1 justify-items-center w-full gap-4">
+        <div className="grid grid-cols-1 justify-items-center w-full gap-4 dark:text-stone-200">
           <div className="relative w-full flex justify-center">
             <Image
               className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto w-1/12 rounded-md"

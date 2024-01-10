@@ -1,14 +1,10 @@
 'use client';
+
 import NavbarMenu from '@/components/NavbarMenu';
-import ParticlesTest from '@/components/ParticlesComponent';
 import SocialMediaContact from '@/components/SocialMediaContact';
 import ProjectCards from '@/components/ProjectCards';
-import Carousel from '@/components/Carousel';
-import Image from 'next/image';
-import Link from 'next/link';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
-import { logoLinks } from '@/components/Carousel/imageByIndex';
 import Experience from '@/components/Experience';
 import {
   useRef,

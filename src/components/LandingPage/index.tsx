@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 import ParticlesComponent from '../ParticlesComponent';
-import useThemePreference from '@/helpers/useThemePreference';
+import { useTheme } from '@/components/ThemePreferenceProvider';
 
 const LandingPage = ({
   fadeOutClassName,
@@ -11,9 +11,7 @@ const LandingPage = ({
   fadeOutClassName: string;
   handleContactMe: () => void;
 }) => {
-  const { theme } = useThemePreference();
-
-  console.log({ theme });
+  const { theme } = useTheme();
 
   return (
     <>

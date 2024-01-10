@@ -108,7 +108,7 @@ const ContactForm = () => {
 
   return (
     <div className="grid grid-col-1 md:grid-cols-2 gap-4">
-      <div className="flex flex-col justify-center md:ml-32 font-semibold text-base">
+      <div className="flex flex-col justify-center md:ml-32 font-semibold text-base dark:text-stone-200">
         <div className="flex flex-row  justify-start items-center">
           <div className="rounded-full bg-slate-200 p-3">
             <PhoneSVG className="fill-[--primary-color] text-lg" />

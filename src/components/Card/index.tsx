@@ -44,7 +44,7 @@ const Card = ({
           sizes="500px"
         />
       </div>
-      <div className="flex flex-col justify-center h-full px-8 mt-3 sm:m-0">
+      <div className="flex flex-col justify-center h-full px-8 mt-3 sm:m-0 dark:text-stone-200 text-center sm:text-start">
         <div>
           <h1 className="text-2xl font-semibold">{headLine}</h1>
           <h3 className="text-sm sm:text-base font-semibold">{subHeadLine}</h3>
@@ -52,7 +52,7 @@ const Card = ({
         <div>
           <p className="text-sm line-clamp-3">{description}</p>
         </div>
-        <div className="flex flex-row flex-wrap w-full pt-3">
+        <div className="flex flex-row flex-wrap w-full pt-3 justify-center sm:justify-start">
           <p className="mr-2">Technologies Used:</p>
           <div className="w-full h-[1px] bg-slate-300 my-1" />
 
