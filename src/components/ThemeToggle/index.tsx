@@ -1,7 +1,7 @@
 import { useTheme } from '@/components/ThemePreferenceProvider';
 import { useState, useEffect } from 'react';
-import SunshineSVG from '../SVG/SunshineSVG';
 import LightModeSVG from '../SVG/LightModeSVG';
+import DarkModeSVG from '../SVG/DarkModeSVG';
 
 const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
@@ -43,7 +43,7 @@ const ThemeToggle = () => {
       {isDarkMode ? (
         <LightModeSVG className="w-6 h-6" />
       ) : (
-        <SunshineSVG className="w-6 h-6" />
+        <DarkModeSVG className="w-6 h-6" />
       )}
     </button>
   );

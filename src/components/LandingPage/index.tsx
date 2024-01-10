@@ -13,8 +13,6 @@ const LandingPage = ({
 }) => {
   const { theme } = useTheme();
 
-  console.log({ themeLandingPage: theme });
-
   return (
     <>
       <div

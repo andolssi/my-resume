@@ -1,6 +1,6 @@
 import React, { SVGProps } from 'react';
 
-const SunshineSVG = (props: SVGProps<SVGSVGElement>) => (
+const DarkModeSVG = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
@@ -20,4 +20,4 @@ const SunshineSVG = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export default SunshineSVG;
+export default DarkModeSVG;
