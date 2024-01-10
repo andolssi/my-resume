@@ -72,7 +72,7 @@ const CARD_DATA = [
 const ProjectCards = () => {
   return (
     <>
-      <h1 className="my-10 text-xl lg:text-start font-sans font-medium text-stone-600 dark:text-stone-400">
+      <h1 className="my-10 text-xl lg:text-start font-sans font-medium text-stone-600 dark:text-stone-200">
         Featured<span className="text-[--primary-color]"> Work</span>
       </h1>
       <div className="grid grid-cols-1 justify-items-center w-full gap-4 mx-auto max-w-5xl sm:w-full p-3 lg:p-8 ">

@@ -10,6 +10,8 @@ import React, {
 } from 'react';
 import MobileNavbar from './MobileNavbar';
 import MenuSVG from '../SVG/MenuSVG';
+import SunshineSVG from '../SVG/SunshineSVG';
+import ThemeToggle from '../ThemeToggle';
 
 const NavbarMenu = ({
   myRef,
@@ -85,11 +87,10 @@ const NavbarMenu = ({
   };
 
   return (
-    <div className="z-30 w-full fixed backdrop-blur-md bg-white/30 sm:h-auto h-[3.75rem] dark:bg-white/15">
+    <div className="z-30 w-full fixed backdrop-blur-md bg-white/30 sm:h-auto h-[2.9rem] dark:bg-white/15 flex flex-row justify-center">
       <button
         type="button"
-        className="fill-[--secondary-color] hover:fill-[--primary-color]  dark:fill-slate-200 dark:hover:fill-white p-2 m-4 rounded-lg ml-8 absolute top-0 left-0 sm:hidden cursor-pointer transition duration-500 ease-in-out 
-        hover:-translate-y-1 hover:scale-105 z-40 hover:bg-white dark:hover:bg-slate-800"
+        className="fill-[--secondary-color] hover:fill-[--primary-color]  dark:fill-slate-200 dark:hover:fill-white p-[0.55rem] m-[0.6rem] ml-8 rounded-lg absolute top-0 left-0 sm:hidden cursor-pointer transition duration-500 ease-in-out hover:scale-110 z-40"
         onClick={() => setIsMobile(!isMobile)}
       >
         <MenuSVG />
@@ -181,6 +182,11 @@ const NavbarMenu = ({
           >
             Contact
           </button>
+        </div>
+      </div>
+      <div className="flex justify-end items-center">
+        <div className="p-[0.55rem] m-1 mr-8 rounded-lg absolute top-0 right-0 cursor-pointer transition duration-500 ease-in-out hover:scale-110 z-30">
+          <ThemeToggle />
         </div>
       </div>
     </div>

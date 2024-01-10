@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay, { AutoplayOptionsType } from 'embla-carousel-autoplay';
 import imageByIndex from './imageByIndex';
 import Image from 'next/image';
-import useThemePreference from '@/helpers/useThemePreference';
+import { useTheme } from '@/components/ThemePreferenceProvider';
 import imageByIndexDark from './imageByIndexDark';
 
 type PropType = {
@@ -12,7 +12,7 @@ type PropType = {
 };
 
 const Carousel: React.FC<PropType> = (props) => {
-  const { theme } = useThemePreference();
+  const { theme } = useTheme();
   const { slides, options } = props;
   const [emblaRef] = useEmblaCarousel(options, [Autoplay()]);
 
