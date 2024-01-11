@@ -10,7 +10,6 @@ import React, {
 } from 'react';
 import MobileNavbar from './MobileNavbar';
 import MenuSVG from '../SVG/MenuSVG';
-import SunshineSVG from '../SVG/DarkModeSVG';
 import ThemeToggle from '../ThemeToggle';
 
 const NavbarMenu = ({
@@ -49,6 +48,7 @@ const NavbarMenu = ({
   useEffect(() => {
     const handleScroll = () => {
       if (myRef.current) {
+        console.log({ navBarWindow: window });
         setScrollY(window.scrollY - 100);
         const currentIndex = calculateIndex(
           scrollY,
