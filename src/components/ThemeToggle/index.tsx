@@ -16,7 +16,7 @@ const ThemeToggle = () => {
     setIsDarkMode(prefersDarkMode);
     toggleDarkMode(prefersDarkMode);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [theme]);
 
   const toggleDarkMode = (shouldEnable: boolean) => {
     document.documentElement.classList.toggle('dark', shouldEnable);
