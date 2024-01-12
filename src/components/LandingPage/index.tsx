@@ -13,6 +13,12 @@ const LandingPage = ({
 }) => {
   const { theme } = useTheme();
 
+  const handleDownload = () => {
+    const fileID = '1BKkneL31-D-dZ5jV9_RjR-mT5lGfxtcI';
+    const downloadLink = `https://drive.google.com/uc?id=${fileID}`;
+    window.open(downloadLink, '_blank');
+  };
+
   return (
     <>
       <div
@@ -82,8 +88,8 @@ const LandingPage = ({
        hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium"
               target="_blank"
               rel="noopener noreferrer"
-              href="/CV Houssem Edine Andolsi.pdf"
-              download
+              href="#"
+              onClick={handleDownload}
             >
               Download CV
             </Link>
