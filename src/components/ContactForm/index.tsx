@@ -115,7 +115,7 @@ const ContactForm = () => {
           </div>
           <div className="w-full my-4 mx-2">
             <h3>Call me</h3>
-            <h3 className="font-normal">+216 52 841 633</h3>
+            <h3 className="font-normal">+971581236274</h3>
           </div>
         </div>
         <div className="flex flex-row  justify-start items-center">
