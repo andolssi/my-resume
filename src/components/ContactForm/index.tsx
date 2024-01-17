@@ -133,7 +133,7 @@ const ContactForm = () => {
           </div>
           <div className="w-full my-4 mx-2">
             <h3>Adress</h3>
-            <h3 className="font-normal">Dubai, United Arab Emirates</h3>
+            <h3 className="font-normal">Abu Dhabi, United Arab Emirates</h3>
           </div>
         </div>
       </div>
