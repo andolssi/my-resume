@@ -16,8 +16,8 @@ const source_Code_Pro = Source_Code_Pro({
 });
 
 export const metadata: Metadata = {
-  title: 'Houssem eddine Andolsi resume',
-  description: 'Houssem eddine Andolsi resume created with next js ...',
+  title: 'Houssem Eddine El Andolsi resume',
+  description: 'Houssem Eddine EL Andolsi resume created with next js ...',
 };
 
 export default function RootLayout({

@@ -235,7 +235,7 @@ const ContactForm = () => {
               <Image
                 className="hidden sm:block absolute top-0 right-full opacity-55 dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full w-auto h-full"
                 src="/flesh-website-decoration.png"
-                alt="Houssem Eddine Andolsi"
+                alt="Houssem Eddine El Andolsi"
                 width={50}
                 height={50}
                 priority

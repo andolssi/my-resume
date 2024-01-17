@@ -8,7 +8,7 @@ const Footer = () => {
         <Image
           className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full md:max-w-md sm:max-w-md rounded-full p-3 m-2"
           src="/Houssem Eddine Andolssi with background.webp"
-          alt="Houssem Eddine Andolsi"
+          alt="Houssem Eddine EL Andolsi"
           width={100}
           height={100}
           style={{

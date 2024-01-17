@@ -38,7 +38,7 @@ const Card = ({
               ? `/websitScreenshots/${imageSrc}`
               : '/mern-dev-img-color-adjusted.png'
           }`}
-          alt="Houssem Eddine Andolsi"
+          alt="Houssem Eddine El Andolsi"
           width={444}
           height={434}
           sizes="500px"
