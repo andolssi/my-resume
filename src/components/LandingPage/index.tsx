@@ -30,7 +30,7 @@ const LandingPage = ({
                 theme === 'dark' ? 'hidden' : ''
               } "relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full md:max-w-md sm:max-w-md h-auto"`}
               src="/Houssem-Eddine-Andolssi-light.webp"
-              alt="Houssem Eddine Andolsi"
+              alt="Houssem Eddine El Andolsi"
               width={454.8}
               height={396.2}
               priority
@@ -40,7 +40,7 @@ const LandingPage = ({
                 theme === 'dark' ? '' : 'hidden'
               } "relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full md:max-w-md sm:max-w-md h-auto"`}
               src="/Houssem-Eddine-Andolssi-Dark.webp"
-              alt="Houssem Eddine Andolsi"
+              alt="Houssem Eddine El Andolsi"
               width={454.8}
               height={396.2}
               loading="lazy"
@@ -60,7 +60,7 @@ const LandingPage = ({
           <h1 className="m-10 lg:m-2 my-0 text-3xl md:text-4xl lg:text-5xl text-center lg:text-start font-sans font-semibold text-slate-700 dark:text-stone-200">
             Hello, I'm{' '}
             <span className="text-[--primary-color] uppercase">
-              Houssem eddine Andolssi
+              Houssem Eddine El Andolssi
             </span>
           </h1>
           <h2 className="m-2 mt-1 text-sm md:text-sm text-center lg:text-start font-sans w-4/5 text-slate-700 dark:text-stone-200">
@@ -84,7 +84,7 @@ const LandingPage = ({
        hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium"
               target="_blank"
               rel="noopener noreferrer"
-              href="/CV Houssem Edine Andolsi.pdf"
+              href="/Houssem Eddine El Andolsi CV.pdf"
               download
             >
               Download CV

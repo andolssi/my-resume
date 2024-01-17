@@ -13,7 +13,7 @@ const Experience = () => {
             <Image
               className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto w-1/12 rounded-md"
               src="/edonec-logo.png"
-              alt="Houssem Eddine Andolsi"
+              alt="Houssem Eddine El Andolsi"
               width={50}
               height={50}
               sizes="500px"

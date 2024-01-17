@@ -11,7 +11,7 @@ const AboutMeCard = ({ handleContactMe }: { handleContactMe: () => void }) => {
           <Image
             className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto"
             src="/mern-dev-img-color-adjusted.webp"
-            alt="Houssem Eddine Andolsi"
+            alt="Houssem Eddine El Andolsi"
             width={444}
             height={434}
             sizes="500px"
