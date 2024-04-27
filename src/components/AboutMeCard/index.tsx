@@ -22,8 +22,12 @@ const AboutMeCard = ({ handleContactMe }: { handleContactMe: () => void }) => {
             ABOUT ME
           </h1>
           <p className="pt-3 lg:w-3/4 w-4/5 text-sm dark:text-stone-200 overflow-hidden">
-            My journey began in 2014, crafting worlds and characters as a game
-            dev. This honed my problem-solving, attention to detail, and
+            Highly motivated MERN Stack Developer (with Mobile Development
+            Experience) with 3+ years of experience building and maintaining
+            scalable web applications using the MERN stack and React Native.
+            <br />
+            My journey began in 2014, crafting worlds and characters as a 3d
+            artist. This honed my problem-solving, attention to detail, and
             fast-paced work ethic. But the spark for code ignited with C#,
             leading me to JavaScript, TypeScript, and React. <br />
             Learning proved swift thanks to my analytical skills, landing me a
