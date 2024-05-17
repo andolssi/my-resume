@@ -48,7 +48,6 @@ const NavbarMenu = ({
   useEffect(() => {
     const handleScroll = () => {
       if (myRef.current) {
-        console.log({ navBarWindow: window });
         setScrollY(window.scrollY - 100);
         const currentIndex = calculateIndex(
           scrollY,

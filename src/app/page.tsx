@@ -30,12 +30,6 @@ export default function Home() {
     setFadeOutClassName('opacity-100');
   }, []);
 
-  const handleContactMe = () => {
-    (contactRef.current as unknown as HTMLDivElement)?.scrollIntoView({
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <main
       className="flex min-h-screen flex-col"
@@ -48,17 +42,14 @@ export default function Home() {
       />
       <SocialMediaContact />
       <section className="flex min-h-screen relative" id="section-LandingPage">
-        <LandingPage
-          fadeOutClassName={fadeOutClassName}
-          handleContactMe={handleContactMe}
-        />
+        <LandingPage fadeOutClassName={fadeOutClassName} />
       </section>
 
       <section
         className="flex min-h-[80dvh] flex-col justify-center items-center scroll-mt-4"
         id="section-aboutMe"
       >
-        <AboutMeCard handleContactMe={handleContactMe} />
+        <AboutMeCard />
       </section>
       <section
         className="flex min-h-[80dvh] flex-col justify-center items-center scroll-mt-4"

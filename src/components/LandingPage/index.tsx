@@ -4,13 +4,7 @@ import Image from 'next/image';
 import ParticlesComponent from '../ParticlesComponent';
 import { useTheme } from '@/components/ThemePreferenceProvider';
 
-const LandingPage = ({
-  fadeOutClassName,
-  handleContactMe,
-}: {
-  fadeOutClassName: string;
-  handleContactMe: () => void;
-}) => {
+const LandingPage = ({ fadeOutClassName }: { fadeOutClassName: string }) => {
   const { theme } = useTheme();
 
   return (
@@ -73,9 +67,8 @@ const LandingPage = ({
               className="my-5 w-fit mx-1 md:mx-2 text-xs md:text-base bg-[--primary-color]
        text-white rounded-md p-3 hover:border-black filter drop-shadow-lg 
        hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium"
-              onClick={handleContactMe}
             >
-              Contact Me
+              <a href="mailto:andolsihoussemeddine@gmail.com">Contact Me</a>
             </button>
 
             <Link

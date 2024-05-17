@@ -24,6 +24,7 @@ interface FormData extends FieldValues {
 }
 
 const ContactForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useRef(null);
   const reCaptchaRef = useRef<ReCAPTCHA>(null);
   const onChangeRef = useRef<((token: string | null) => void) | null>(null);
@@ -45,6 +46,7 @@ const ContactForm = () => {
   });
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
+    setIsSubmitting(true);
     try {
       const recaptchaToken = await new Promise<string | null>((resolve) => {
         reCaptchaRef.current?.execute();
@@ -86,6 +88,7 @@ const ContactForm = () => {
     } catch (error) {
       console.error('Error submitting form:', error);
     }
+    setIsSubmitting(false);
   };
 
   useEffect(() => {
@@ -109,7 +112,10 @@ const ContactForm = () => {
   return (
     <div className="grid grid-col-1 md:grid-cols-2 gap-4">
       <div className="flex flex-col justify-center md:ml-32 font-semibold text-base dark:text-stone-200">
-        <div className="flex flex-row  justify-start items-center">
+        <a
+          href="tel:+21652841633"
+          className="flex flex-row  justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out"
+        >
           <div className="rounded-full bg-slate-200 p-3">
             <PhoneSVG className="fill-[--primary-color] text-lg" />
           </div>
@@ -117,8 +123,11 @@ const ContactForm = () => {
             <h3>Call me</h3>
             <h3 className="font-normal">+21652841633</h3>
           </div>
-        </div>
-        <div className="flex flex-row  justify-start items-center">
+        </a>
+        <a
+          href="mailto:andolsihoussemeddine@gmail.com"
+          className="flex flex-row  justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out"
+        >
           <div className="rounded-full bg-slate-200 p-3">
             <EmailSVG className="fill-[--primary-color] text-lg" />
           </div>
@@ -126,7 +135,7 @@ const ContactForm = () => {
             <h3>Email me</h3>
             <h3 className="font-normal">andolsihoussemeddine@gmail.com </h3>
           </div>
-        </div>
+        </a>
         <div className="flex flex-row  justify-start items-center">
           <div className="rounded-full bg-slate-200 p-3">
             <PositionSVG className="fill-[--primary-color] text-3" />
@@ -226,11 +235,21 @@ const ContactForm = () => {
               />
               <button
                 type="submit"
-                className="text-xs md:text-base bg-[--primary-color]
+                className={`text-xs md:text-base bg-[--primary-color] hover:cursor-pointer
              text-white rounded-md hover:border-black filter drop-shadow-lg 
-             hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium w-full p-3"
+             hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium w-full p-3 ${
+               isSubmitting ? 'loading hover:cursor-not-allowed text-lg!' : ''
+             }`}
+                disabled={isSubmitting}
               >
-                Submit
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2 w-100">
+                    Loading
+                    <div className="h-6 w-4 border-b-2 border-current rounded-full animate-spin"></div>
+                  </span>
+                ) : (
+                  'Submit'
+                )}
               </button>
               <Image
                 className="hidden sm:block absolute top-0 right-full opacity-55 dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full w-auto h-full"

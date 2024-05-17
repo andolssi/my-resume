@@ -1,16 +1,11 @@
 'use client';
 
 import React from 'react';
-import LinkedInSVG from '../SVG/socialMedia/LinkedInSVG';
-import GithubSVG from '../SVG/socialMedia/GithubSVG';
-import GitlabSVG from '../SVG/socialMedia/GitlabSVG';
-import FacebookSVG from '../SVG/socialMedia/FacebookSVG';
-import Link from 'next/link';
 import Links from './Links';
 
 export const socialMediaLinks = {
   facebookLink: 'https://www.facebook.com/houssemandolsi',
-  linkedInLink: 'https://www.linkedin.com/in/houssem-eddine-andolsi-433990134/',
+  linkedInLink: 'https://www.linkedin.com/in/houssem-eddine-el-andolsi',
   githubLink: 'https://github.com/andolssi',
   gitlabLink: 'https://gitlab.com/Andolssi',
 };
