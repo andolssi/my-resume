@@ -116,8 +116,8 @@ const ContactForm = () => {
           href="tel:+21652841633"
           className="flex flex-row  justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out contact-headline"
         >
-          <div className="rounded-full bg-slate-200 p-3">
-            <PhoneSVG className="fill-[--primary-color] text-lg" />
+          <div className="rounded-full bg-[--primary-color] p-3">
+            <PhoneSVG className="fill-white text-lg" />
           </div>
           <div className="w-full my-4 mx-2">
             <h3 className="transition-all ease-in-out">Call me</h3>
@@ -128,8 +128,8 @@ const ContactForm = () => {
           href="mailto:andolsihoussemeddine@gmail.com"
           className="flex flex-row justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out contact-headline"
         >
-          <div className="rounded-full bg-slate-200 p-3">
-            <EmailSVG className="fill-[--primary-color] text-lg" />
+          <div className="rounded-full bg-[--primary-color] p-3">
+            <EmailSVG className="fill-white text-lg" />
           </div>
           <div className="w-full my-4 mx-2">
             <h3 className="transition-all ease-in-out">Email me</h3>
@@ -137,8 +137,8 @@ const ContactForm = () => {
           </div>
         </a>
         <div className="flex flex-row  justify-start items-center">
-          <div className="rounded-full bg-slate-200 p-3">
-            <PositionSVG className="fill-[--primary-color] text-3" />
+          <div className="rounded-full bg-[--primary-color] p-3">
+            <PositionSVG className="fill-white text-3" />
           </div>
           <div className="w-full my-4 mx-2">
             <h3>Adress</h3>
