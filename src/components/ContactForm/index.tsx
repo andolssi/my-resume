@@ -114,25 +114,25 @@ const ContactForm = () => {
       <div className="flex flex-col justify-center md:ml-32 font-semibold text-base dark:text-stone-200">
         <a
           href="tel:+21652841633"
-          className="flex flex-row  justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out"
+          className="flex flex-row  justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out contact-headline"
         >
           <div className="rounded-full bg-slate-200 p-3">
             <PhoneSVG className="fill-[--primary-color] text-lg" />
           </div>
           <div className="w-full my-4 mx-2">
-            <h3>Call me</h3>
+            <h3 className="transition-all ease-in-out">Call me</h3>
             <h3 className="font-normal">+21652841633</h3>
           </div>
         </a>
         <a
           href="mailto:andolsihoussemeddine@gmail.com"
-          className="flex flex-row  justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out"
+          className="flex flex-row justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out contact-headline"
         >
           <div className="rounded-full bg-slate-200 p-3">
             <EmailSVG className="fill-[--primary-color] text-lg" />
           </div>
           <div className="w-full my-4 mx-2">
-            <h3>Email me</h3>
+            <h3 className="transition-all ease-in-out">Email me</h3>
             <h3 className="font-normal">andolsihoussemeddine@gmail.com </h3>
           </div>
         </a>
