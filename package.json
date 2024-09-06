@@ -24,6 +24,7 @@
     "react-particles": "^2.12.2",
     "tsparticles": "^3.0.3",
     "tsparticles-slim": "^2.12.0",
+    "update-browserslist-db": "^1.1.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

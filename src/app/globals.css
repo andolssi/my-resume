@@ -98,3 +98,28 @@ body {
 .contact-headline:hover :nth-child(2) :first-child {
   color: var(--primary-color);
 }
+
+input[type='radio'] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #dfa1a1;
+  border-radius: 50%;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+input[type='radio']:checked {
+  border-color: var(--primary-color); /* Use your primary color */
+  background-color: var(--primary-color); /* Use your primary color */
+}
+
+input[type='radio']:checked::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin: 2px;
+  border-radius: 50%;
+  background-color: white; /* Color of the inner circle */
+}
