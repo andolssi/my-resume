@@ -101,7 +101,7 @@ const Step04 = ({
                       id={`importance${index}`}
                       {...register(`question${questionNumber}.${index}`)}
                     >
-                      <option value="." className="text-black text-xl">
+                      <option value="." className="text-black">
                         Select importance
                       </option>
                       {TERMES_LINGUISTIQUE.map((term) => (
