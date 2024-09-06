@@ -52,12 +52,27 @@ const Step10 = ({
               <React.Fragment key={criterion}>
                 <h3 className="ring-2 p-2 rounded-md">{criterion}</h3>
                 {(errors?.question10?.[criterion] as unknown as FieldError) && (
-                  <p className="text-red-500 dark:text-red-300 text-sm m-1">
-                    {
-                      (errors?.question10?.[criterion] as unknown as FieldError)
-                        ?.message
-                    }
-                  </p>
+                  <div
+                    ref={(el) => {
+                      if (el && errors?.question10?.[criterion]) {
+                        el.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'center',
+                        });
+                        el.focus();
+                      }
+                    }}
+                  >
+                    <p className="text-red-500 dark:text-red-300 text-sm m-1">
+                      {
+                        (
+                          errors?.question10?.[
+                            criterion
+                          ] as unknown as FieldError
+                        )?.message
+                      }
+                    </p>
+                  </div>
                 )}
                 {resultData.subCriteria?.[criterion]
                   .filter(

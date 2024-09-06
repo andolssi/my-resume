@@ -54,7 +54,7 @@ export const useStep08 = (setStep: React.Dispatch<React.SetStateAction<number>>,
                 (prev.evaluation.subCriteriaEvaluation as { [key: string]: any })[(resultData.criteria as string[])[index]] = {
                     ...prevSubCriteria,
                     lessImportantSubCriterion: {
-                        subCriteria: el
+                        subCriterion: el
                     }
                 };
             })
