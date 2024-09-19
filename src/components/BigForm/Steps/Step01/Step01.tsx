@@ -4,8 +4,8 @@ import { useStep01 } from './useStep01';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Image from 'next/image';
 import StepDescription from '../../StepDescription';
-import { IresultData } from '../..';
 import FormComponent from '@/components/FormComponent';
+import { IresultData } from '@/types/bigFormDataType';
 
 const Step01 = ({
   questionNumber,
@@ -30,8 +30,10 @@ const Step01 = ({
     reCaptchaRef,
     onChangeRef,
     fields,
-    remove,
-    append,
+    handleRemove,
+    handleAppend,
+    recaptchaError,
+    handleRecaptchaToken,
   } = useStep01(setStep, setResultData, resultData);
 
   if (!process.env.NEXT_PUBLIC_reCAPTCHA_site_key) {
@@ -56,33 +58,29 @@ const Step01 = ({
                 {fields.map((field, index) => (
                   <div key={field.id}>
                     <li className="flex flex-wrap my-2 justify-between">
-                      <>
-                        <label
-                          htmlFor={`question${questionNumber}.${index}.criteria`}
-                          className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-200 my-3 mr-2"
-                        >
-                          {`Critère n-${index + 1}`}
-                        </label>
-                        <input
-                          key={field.id}
-                          {...register(`question1.${index}.criteria`)}
-                          type="text"
-                          name={`question${questionNumber}.${index}.criteria`}
-                          id={`question${questionNumber}.${index}.criteria`}
-                          className={`block w-1/2 rounded-md border-[1px] ring-0 py-1.5 px-1 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6 max-w-56 ${
-                            errors?.['question1']?.[index]
-                              ? 'border-red-300'
-                              : ''
-                          }`}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => remove(index)}
-                          className="border-[1px] rounded-md px-2 hover:scale-105 hover:border-red-950 cursor-pointer"
-                        >
-                          ❌
-                        </button>
-                      </>
+                      <label
+                        htmlFor={`question${questionNumber}.${index}.criteria`}
+                        className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-200 my-3 mr-2"
+                      >
+                        {`Critère n-${index + 1}`}
+                      </label>
+                      <input
+                        key={field.id}
+                        {...register(`question1.${index}.criteria`)}
+                        type="text"
+                        name={`question${questionNumber}.${index}.criteria`}
+                        id={`question${questionNumber}.${index}.criteria`}
+                        className={`block w-1/2 rounded-md border-[1px] ring-0 py-1.5 px-1 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6 max-w-56 ${
+                          errors?.['question1']?.[index] ? 'border-red-300' : ''
+                        }`}
+                      />
+                      <button
+                        type="button"
+                        onClick={handleRemove(index)}
+                        className="border-[1px] rounded-md px-2 hover:scale-105 hover:border-red-950 cursor-pointer"
+                      >
+                        ❌
+                      </button>
                     </li>
                     <p className="text-red-500 dark:text-red-300 text-sm m-1 text-center ml-12">
                       {errors?.['question1'] &&
@@ -93,7 +91,7 @@ const Step01 = ({
               </ul>
               <button
                 type="button"
-                onClick={() => append({ criteria: '' })}
+                onClick={handleAppend}
                 className="font-extrabold border-[1px] rounded-md px-2 hover:scale-105 hover:border-green-900 text-green-900 text-4xl cursor-pointer"
               >
                 +
@@ -104,15 +102,9 @@ const Step01 = ({
             <ReCAPTCHA
               size="invisible"
               ref={reCaptchaRef}
-              onChange={(token) => {
-                if (onChangeRef.current) {
-                  onChangeRef.current(token);
-                }
-              }}
+              onChange={handleRecaptchaToken}
               sitekey={process.env.NEXT_PUBLIC_reCAPTCHA_site_key}
-              onError={(err) => {
-                console.error('reCAPTCHA error:', err);
-              }}
+              onError={recaptchaError}
             />
             <button
               type="submit"

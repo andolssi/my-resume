@@ -3,7 +3,7 @@ import { FieldError } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Image from 'next/image';
 import StepDescription from '../../StepDescription';
-import { IresultData } from '../..';
+import { IresultData } from '@/types/bigFormDataType';
 import { useStep10 } from './useStep10';
 import { TERMES_LINGUISTIQUE } from '../Step06/Step06';
 import FormComponent from '@/components/FormComponent';

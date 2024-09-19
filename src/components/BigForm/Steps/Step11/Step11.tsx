@@ -2,7 +2,7 @@ import React from 'react';
 import { FieldError } from 'react-hook-form';
 import Image from 'next/image';
 import StepDescription from '../../StepDescription';
-import { IresultData } from '../..';
+import { IresultData } from '@/types/bigFormDataType';
 import { useStep11 } from './useStep11';
 import FormComponent from '@/components/FormComponent';
 

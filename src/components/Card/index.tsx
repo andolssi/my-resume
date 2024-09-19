@@ -8,7 +8,6 @@ type Iprops = {
   callToActionTitle: string;
   description?: string;
   imageSrc?: string;
-  secondCallToActionTitle?: string;
   link: string;
   index: number;
   relatedTechnologies: string[];
@@ -24,6 +23,9 @@ const Card = ({
   index,
   relatedTechnologies,
 }: Iprops) => {
+  const handleClick = () => () => {
+    window.open(link, '_blank', 'noopener,noreferrer');
+  };
   return (
     <div
       className={`p-1 min-[400px]:p-4 rounded-md my-4 flex justify-between ${
@@ -32,9 +34,7 @@ const Card = ({
     >
       <div
         className="relative w-full p-3 sm:p-0 hover:scale-105 hover:cursor-pointer dark:text-stone-200 transition-all ease-in-out"
-        onClick={() => {
-          window.open(link, '_blank', 'noopener,noreferrer');
-        }}
+        onClick={handleClick()}
       >
         <Image
           className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto w-full rounded-md"
@@ -48,7 +48,7 @@ const Card = ({
           height={434}
           sizes="500px"
         />
-        <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-white bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-20"></div>
+        <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-white bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-20" />
       </div>
       <div className="flex flex-col justify-center h-full px-8 mt-3 sm:m-0  text-center sm:text-start">
         <div>

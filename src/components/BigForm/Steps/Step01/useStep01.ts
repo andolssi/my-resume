@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, SubmitHandler, FieldValues, useFieldArray, UseFormProps } from "react-hook-form";
 import { z } from "zod";
-import { IresultData } from "../..";
+import { IresultData } from '@/types/bigFormDataType';
 
 const schema = z.object({
     question1: z.array(z.object({
@@ -92,8 +92,21 @@ export const useStep01 = (setStep: React.Dispatch<React.SetStateAction<number>>,
         }
     };
 
+    const handleAppend = () => {
+        append({ criteria: '' })
+    }
+    const handleRemove = (index: number) => () => {
+        remove(index)
+    }
 
-
+    const recaptchaError = (err: React.SyntheticEvent<HTMLDivElement, Event>) => {
+        console.error('reCAPTCHA error:', err);
+    }
+    const handleRecaptchaToken = (token: string | null) => {
+        if (onChangeRef.current) {
+            onChangeRef.current(token);
+        }
+    }
 
     return {
         isSubmitting,
@@ -105,8 +118,10 @@ export const useStep01 = (setStep: React.Dispatch<React.SetStateAction<number>>,
         reCaptchaRef,
         onChangeRef,
         fields,
-        remove,
-        append
+        handleRemove,
+        handleAppend,
+        recaptchaError,
+        handleRecaptchaToken
     }
 }
 

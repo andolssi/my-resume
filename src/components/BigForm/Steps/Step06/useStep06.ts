@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { z } from "zod";
-import { IresultData } from "../..";
+import { IresultData } from '@/types/bigFormDataType';
 
 const schema = z.object({
     question6: z.array((z.string().min(2, { message: 'Select importance ↑' })

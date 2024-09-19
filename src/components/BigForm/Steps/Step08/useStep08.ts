@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { z } from "zod";
-import { IresultData } from "../..";
+import { IresultData } from '@/types/bigFormDataType';
 
 const schema = z.object({
     question8: z.array((z.string().min(1, { message: 'Select le plus important sous-critère ↑' })
@@ -67,7 +67,7 @@ export const useStep08 = (setStep: React.Dispatch<React.SetStateAction<number>>,
         setStep((prev) => prev + 1);
     };
 
-    const handleLabelClick = (subCriteria: string, index: number) => {
+    const handleLabelClick = (subCriteria: string, index: number) => () => {
         setValue(`question${questionNumber}.[${index}]`, subCriteria);
     };
 

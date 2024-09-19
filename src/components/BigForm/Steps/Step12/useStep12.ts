@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { z } from "zod";
-import { IresultData } from "../..";
+import { IresultData } from '@/types/bigFormDataType';
 
 const subCriteriaConsiderationSchema = z.object({
     considereSubCriterionForeverMostImportant: z.string().min(2, { message: 'Select ↑' }),
@@ -37,7 +37,6 @@ export const useStep12 = (setStep: React.Dispatch<React.SetStateAction<number>>,
         register,
         setError, // Add setError method
         formState: { errors },
-        watch
     } = useForm<FormData>({
         resolver: zodResolver(schema),
     });
@@ -123,6 +122,15 @@ export const useStep12 = (setStep: React.Dispatch<React.SetStateAction<number>>,
         }
     };
 
+    const recaptchaError = (err: React.SyntheticEvent<HTMLDivElement, Event>) => {
+        console.error('reCAPTCHA error:', err);
+    }
+    const handleRecaptchaToken = (token: string | null) => {
+        if (onChangeRef.current) {
+            onChangeRef.current(token);
+        }
+    }
+
     return {
         isSubmitting,
         form,
@@ -132,7 +140,8 @@ export const useStep12 = (setStep: React.Dispatch<React.SetStateAction<number>>,
         errors,
         reCaptchaRef,
         onChangeRef,
-        watch
+        recaptchaError,
+        handleRecaptchaToken
     }
 }
 

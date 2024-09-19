@@ -1,109 +1,25 @@
-import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { FieldValues, useForm, SubmitHandler } from 'react-hook-form';
+import React from 'react';
 import EmailSVG from '../SVG/contactSVG/EmailSVG';
 import PhoneSVG from '../SVG/contactSVG/PhoneSVG';
 import PositionSVG from '../SVG/contactSVG/PositionSVG';
-import emailjs from '@emailjs/browser';
 import EmailAlert from '../Alerts/EmailAlert';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
-
-const schema = z.object({
-  email: z.string().email(),
-  phone: z.string().min(8),
-  message: z.string().min(8),
-});
-
-interface FormData extends FieldValues {
-  email: string;
-  phone: string;
-  message: string;
-  'g-recaptcha-response'?: string;
-}
+import { useContactForm } from './useContactForm';
 
 const ContactForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const form = useRef(null);
-  const reCaptchaRef = useRef<ReCAPTCHA>(null);
-  const onChangeRef = useRef<((token: string | null) => void) | null>(null);
-  const [showAlert, setShowAlert] = useState<{
-    successAlert: boolean;
-    failureAlert: boolean;
-  }>({
-    successAlert: false,
-    failureAlert: false,
-  });
-
   const {
     handleSubmit,
-    reset,
+    errors,
+    onSubmit,
     register,
-    formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
-  });
-
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
-    setIsSubmitting(true);
-    try {
-      const recaptchaToken = await new Promise<string | null>((resolve) => {
-        reCaptchaRef.current?.execute();
-        onChangeRef.current = resolve;
-      });
-
-      if (!recaptchaToken) {
-        console.error('reCAPTCHA token not available');
-        return;
-      }
-
-      data['g-recaptcha-response'] = recaptchaToken;
-
-      if (
-        !process.env.NEXT_PUBLIC_EMAILJS_ServiceID ||
-        !process.env.NEXT_PUBLIC_EMAILJS_TemplateID ||
-        !process.env.NEXT_PUBLIC_EMAILJS_PublicKey
-      )
-        return;
-
-      emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_ServiceID,
-          process.env.NEXT_PUBLIC_EMAILJS_TemplateID,
-          (form as unknown as MutableRefObject<HTMLFormElement>).current,
-          process.env.NEXT_PUBLIC_EMAILJS_PublicKey,
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-            setShowAlert((prev) => ({ ...prev, successAlert: true }));
-            reset();
-          },
-          (error) => {
-            console.log(error.text);
-            setShowAlert((prev) => ({ ...prev, failureAlert: true }));
-          },
-        );
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    }
-    setIsSubmitting(false);
-  };
-
-  useEffect(() => {
-    const disableContactAlert = setTimeout(() => {
-      if (showAlert.successAlert) {
-        setShowAlert((prev) => ({ ...prev, successAlert: false }));
-      } else if (showAlert.failureAlert) {
-        setShowAlert((prev) => ({ ...prev, failureAlert: false }));
-      }
-    }, 5000);
-
-    return () => {
-      clearTimeout(disableContactAlert);
-    };
-  }, [showAlert.successAlert, showAlert.failureAlert]);
+    formState: { isSubmitting },
+    showAlert,
+    form,
+    recaptchaError,
+    handleRecaptchaToken,
+    reCaptchaRef,
+  } = useContactForm();
 
   if (!process.env.NEXT_PUBLIC_reCAPTCHA_site_key) {
     return;
@@ -223,15 +139,9 @@ const ContactForm = () => {
               <ReCAPTCHA
                 size="invisible"
                 ref={reCaptchaRef}
-                onChange={(token) => {
-                  if (onChangeRef.current) {
-                    onChangeRef.current(token);
-                  }
-                }}
+                onChange={handleRecaptchaToken}
                 sitekey={process.env.NEXT_PUBLIC_reCAPTCHA_site_key}
-                onError={(err) => {
-                  console.error('reCAPTCHA error:', err);
-                }}
+                onError={recaptchaError}
               />
               <button
                 type="submit"
@@ -245,7 +155,7 @@ const ContactForm = () => {
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2 w-100">
                     Loading
-                    <div className="h-6 w-4 border-b-2 border-current rounded-full animate-spin"></div>
+                    <div className="h-6 w-4 border-b-2 border-current rounded-full animate-spin" />
                   </span>
                 ) : (
                   'Submit'
