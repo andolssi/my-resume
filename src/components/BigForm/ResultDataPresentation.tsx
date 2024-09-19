@@ -1,12 +1,35 @@
 import React from 'react';
-import { IresultData } from './index';
+import { IresultData } from '@/types/bigFormDataType';
 
 const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
+  const finishTheFirstPart = () => {
+    localStorage.setItem('resultData', JSON.stringify(data));
+    window.location.href = '/test/second-step';
+  };
+  const updateTheFirstPart = () => {
+    window.location.href = '/test';
+  };
   return (
     <div className="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">
-        Confirmation d'informations
-      </h2>
+      <div className="mb-4">
+        <h2 className="text-2xl font-bold text-gray-800 text-center">
+          Confirmation d'informations
+        </h2>
+        <div className="flex justify-center mt-4">
+          <button
+            className="p-3 rounded-md border-[1px] border-green-500 text-green-700 hover:text-white mx-2 hover:bg-green-500"
+            onClick={finishTheFirstPart}
+          >
+            confirmer
+          </button>
+          <button
+            className="p-3 rounded-md border-[1px] border-orange-400 text-orange-700 hover:text-white mx-2 hover:bg-orange-400"
+            onClick={updateTheFirstPart}
+          >
+            modifier
+          </button>
+        </div>
+      </div>
       <div className="p-6 flex flex-col md:flex-row overflow-y-auto max-h-[37rem] gap-4 rounded">
         <div className="">
           <div className="mb-6">
@@ -28,11 +51,17 @@ const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
             </h3>
             {Object.entries(data.subCriteria || {}).map(
               ([criterion, subCriterion], index) => (
-                <div key={index} className="mb-3">
+                <div
+                  key={`${criterion}${subCriterion}${index}`}
+                  className="mb-3"
+                >
                   <h4 className="font-medium text-gray-700">{criterion}</h4>
                   <ul className="list-disc pl-5">
                     {subCriterion.map((subCriterion, subIndex) => (
-                      <li key={subIndex} className="text-gray-600">
+                      <li
+                        key={`${subCriterion}${subIndex}`}
+                        className="text-gray-600"
+                      >
                         {subCriterion}
                       </li>
                     ))}
@@ -81,11 +110,11 @@ const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
                 </span>
               </p>
 
-              <p className="text-gray-600">
+              <div className="text-gray-600">
                 {Object.entries(
                   data.enduringConsideration?.subCriteriaConsideration || {},
                 ).map(([criterion, subCriterion], index) => (
-                  <React.Fragment key={index}>
+                  <React.Fragment key={`${subCriterion}${index}`}>
                     <h4 className="font-medium text-gray-700">{criterion}</h4>
                     Sous-critere toujours considéré comme le plus important:
                     <span
@@ -114,7 +143,7 @@ const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
                     </span>
                   </React.Fragment>
                 ))}
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -146,8 +175,8 @@ const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
               </p>
               {Object.entries(data.evaluation?.subCriteriaEvaluation || {}).map(
                 ([criterion, subCriterion], index) => (
-                  <React.Fragment key={index}>
-                    <div key={index} className="mb-3">
+                  <React.Fragment key={`${criterion}${index}`}>
+                    <div className="mb-3">
                       <h3 className="font-semibold text-gray-700">
                         {criterion}
                       </h3>
@@ -178,8 +207,8 @@ const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
                 </h4>
 
                 {data.evaluation?.mostImportantCriterion.relations?.map(
-                  (el) => (
-                    <h4 key={el} className="font-medium text-gray-700">
+                  (el, i) => (
+                    <h4 key={`${el}${i}`} className="font-medium text-gray-700">
                       {el}{' '}
                     </h4>
                   ),
@@ -189,8 +218,8 @@ const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
                 </h4>
 
                 {data.evaluation?.lessImportantCriterion?.relations?.map(
-                  (el) => (
-                    <h4 key={el} className="font-medium text-gray-700">
+                  (el, i) => (
+                    <h4 key={`${el}${i}`} className="font-medium text-gray-700">
                       {el}{' '}
                     </h4>
                   ),
@@ -198,7 +227,7 @@ const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
               </div>
               {Object.entries(data.evaluation?.subCriteriaEvaluation || {}).map(
                 ([criterion, subCriterion], index) => (
-                  <React.Fragment key={index}>
+                  <React.Fragment key={`${criterion}${index}`}>
                     <div key={index} className="mb-3">
                       <h3 className="font-semibold text-gray-700">
                         {criterion}
@@ -208,8 +237,11 @@ const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
                       </h4>
 
                       {subCriterion.mostImportantSubCriterion.relations?.map(
-                        (el) => (
-                          <h4 key={el} className="font-medium text-gray-700">
+                        (el, i) => (
+                          <h4
+                            key={`${el}${i}`}
+                            className="font-medium text-gray-700"
+                          >
                             {el}{' '}
                           </h4>
                         ),
@@ -219,8 +251,11 @@ const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
                       </h4>
 
                       {subCriterion.lessImportantSubCriterion?.relations?.map(
-                        (el) => (
-                          <h4 key={el} className="font-medium text-gray-700">
+                        (el, i) => (
+                          <h4
+                            key={`${el}${i}`}
+                            className="font-medium text-gray-700"
+                          >
                             {el}{' '}
                           </h4>
                         ),

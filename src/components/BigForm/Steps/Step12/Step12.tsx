@@ -3,7 +3,7 @@ import { FieldError } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Image from 'next/image';
 import StepDescription from '../../StepDescription';
-import { IresultData } from '../..';
+import { IresultData } from '@/types/bigFormDataType';
 import { useStep12 } from './useStep12';
 import FormComponent from '@/components/FormComponent';
 import { YES_NO_OPTION } from '../Step11/Step11';
@@ -30,7 +30,8 @@ const Step12 = ({
     errors,
     reCaptchaRef,
     onChangeRef,
-    watch,
+    recaptchaError,
+    handleRecaptchaToken,
   } = useStep12(setStep, setResultData, resultData);
 
   if (!process.env.NEXT_PUBLIC_reCAPTCHA_site_key) {
@@ -156,15 +157,9 @@ const Step12 = ({
           <ReCAPTCHA
             size="invisible"
             ref={reCaptchaRef}
-            onChange={(token) => {
-              if (onChangeRef.current) {
-                onChangeRef.current(token);
-              }
-            }}
+            onChange={handleRecaptchaToken}
             sitekey={process.env.NEXT_PUBLIC_reCAPTCHA_site_key}
-            onError={(err) => {
-              console.error('reCAPTCHA error:', err);
-            }}
+            onError={recaptchaError}
           />
           <button
             type="submit"

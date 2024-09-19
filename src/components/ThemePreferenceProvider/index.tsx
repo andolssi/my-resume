@@ -6,6 +6,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 
@@ -52,8 +53,13 @@ const ThemePreferenceProvider = ({
     };
   }, [autoTheme]);
 
+  const themeContextValue = useMemo(
+    () => ({ theme, setTheme, setAutoTheme }),
+    [theme],
+  );
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, setAutoTheme }}>
+    <ThemeContext.Provider value={themeContextValue}>
       {children}
     </ThemeContext.Provider>
   );

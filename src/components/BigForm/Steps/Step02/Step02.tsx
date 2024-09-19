@@ -4,7 +4,7 @@ import { useStep02 } from './useStep02';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Image from 'next/image';
 import StepDescription from '../../StepDescription';
-import { IresultData } from '../..';
+import { IresultData } from '@/types/bigFormDataType';
 import FormComponent from '@/components/FormComponent';
 
 const Step02 = ({
@@ -32,8 +32,8 @@ const Step02 = ({
     register,
     errors,
     fields,
-    remove,
-    append,
+    handleAppend,
+    handleRemove,
   } = useStep02(setStep, setResultData, resultData, criterion, setSubSteps);
 
   if (!process.env.NEXT_PUBLIC_reCAPTCHA_site_key) {
@@ -61,33 +61,29 @@ const Step02 = ({
                 {fields.map((field, index) => (
                   <div key={field.id}>
                     <li className="flex flex-wrap my-2 justify-between">
-                      <>
-                        <label
-                          htmlFor={`question2.${index}.subCriterion`}
-                          className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-200 my-3 mr-2"
-                        >
-                          {`Sous critère n-${index + 1}`}
-                        </label>
-                        <input
-                          key={field.id}
-                          {...register(`question2.${index}.subCriterion`)}
-                          type="text"
-                          name={`question2.${index}.subCriterion`}
-                          id={`question2.${index}.subCriterion`}
-                          className={`block w-1/2 rounded-md border-[1px] ring-0 py-1.5 px-1 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6 max-w-56 ${
-                            errors?.['question2']?.[index]
-                              ? 'border-red-300'
-                              : ''
-                          }`}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => remove(index)}
-                          className="border-[1px] rounded-md px-2 hover:scale-105 hover:border-red-950 cursor-pointer"
-                        >
-                          ❌
-                        </button>
-                      </>
+                      <label
+                        htmlFor={`question2.${index}.subCriterion`}
+                        className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-200 my-3 mr-2"
+                      >
+                        {`Sous critère n-${index + 1}`}
+                      </label>
+                      <input
+                        key={field.id}
+                        {...register(`question2.${index}.subCriterion`)}
+                        type="text"
+                        name={`question2.${index}.subCriterion`}
+                        id={`question2.${index}.subCriterion`}
+                        className={`block w-1/2 rounded-md border-[1px] ring-0 py-1.5 px-1 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6 max-w-56 ${
+                          errors?.['question2']?.[index] ? 'border-red-300' : ''
+                        }`}
+                      />
+                      <button
+                        type="button"
+                        onClick={handleRemove(index)}
+                        className="border-[1px] rounded-md px-2 hover:scale-105 hover:border-red-950 cursor-pointer"
+                      >
+                        ❌
+                      </button>
                     </li>
                     <p className="text-red-500 dark:text-red-300 text-sm m-1 text-center ml-12">
                       {errors?.['question2'] &&
@@ -98,7 +94,7 @@ const Step02 = ({
               </ul>
               <button
                 type="button"
-                onClick={() => append({ subCriterion: '' })}
+                onClick={handleAppend}
                 className="font-extrabold border-[1px] rounded-md px-2 hover:scale-105 hover:border-green-900 text-green-900 text-4xl cursor-pointer"
               >
                 +

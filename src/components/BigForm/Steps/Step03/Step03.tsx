@@ -4,7 +4,7 @@ import { useStep03 } from './useStep03';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Image from 'next/image';
 import StepDescription from '../../StepDescription';
-import { IresultData } from '../..';
+import { IresultData } from '@/types/bigFormDataType';
 import FormComponent from '@/components/FormComponent';
 
 const Step03 = ({

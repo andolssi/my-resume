@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { z } from "zod";
-import { IresultData } from "../..";
+import { IresultData } from '@/types/bigFormDataType';
 
 
 const schema = z.object({
@@ -59,7 +59,7 @@ export const useStep07 = (setStep: React.Dispatch<React.SetStateAction<number>>,
         setStep((prev) => prev + 1);
     };
 
-    const handleLabelClick = (subCriterion: string, index: number) => {
+    const handleLabelClick = (subCriterion: string, index: number) => () => {
         setValue(`question${questionNumber}.[${index}]`, subCriterion);
     };
 

@@ -3,7 +3,7 @@ import { Controller, FieldError } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Image from 'next/image';
 import StepDescription from '../../StepDescription';
-import { IresultData } from '../..';
+import { IresultData } from '@/types/bigFormDataType';
 import { useStep07 } from './useStep07';
 import FormComponent from '@/components/FormComponent';
 
@@ -81,7 +81,7 @@ const Step07 = ({
                            ? 'bg-[--primary-color] text-white'
                            : ''
                        }`}
-                    onClick={() => handleLabelClick(subCriterion, index)}
+                    onClick={handleLabelClick(subCriterion, index)}
                   >
                     <label
                       htmlFor={`question${questionNumber}.[${index}]`}
