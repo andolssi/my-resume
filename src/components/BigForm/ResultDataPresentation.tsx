@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IresultData } from '@/types/bigFormDataType';
+import { useRouter } from 'next/navigation';
+import { calculateSimplex } from '@/app/actions/calculateSimplex';
 
 const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
+  const router = useRouter();
+
   const finishTheFirstPart = () => {
-    localStorage.setItem('resultData', JSON.stringify(data));
-    window.location.href = '/test/second-step';
+    localStorage.setItem('finalResultData', JSON.stringify(data));
+    router.push('/test/second-step');
   };
   const updateTheFirstPart = () => {
     window.location.href = '/test';

@@ -23,10 +23,6 @@ const Step03 = ({
   const { isSubmitting, form, onSubmit, handleSubmit, register, errors } =
     useStep03(setStep, setResultData);
 
-  if (!process.env.NEXT_PUBLIC_reCAPTCHA_site_key) {
-    return;
-  }
-
   return (
     <div className="flex flex-col md:flex-row gap-8 font-semibold text-base dark:text-stone-200 w-full">
       <StepDescription step={Number(questionNumber)} />

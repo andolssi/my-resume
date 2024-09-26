@@ -1,34 +1,36 @@
 'use client';
 
-import NavbarMenu from '@/components/NavbarMenu';
-import SocialMediaContact from '@/components/SocialMediaContact';
-import ProjectCards from '@/components/ProjectCards';
-import ContactForm from '@/components/ContactForm';
-import Footer from '@/components/Footer';
-import Experience from '@/components/Experience';
-import {
-  useRef,
-  MutableRefObject,
-  LegacyRef,
-  useEffect,
-  useState,
-} from 'react';
-import AboutMeCard from '@/components/AboutMeCard';
-import LandingPage from '@/components/LandingPage';
+import { useRef, MutableRefObject, LegacyRef, useState } from 'react';
+import dynamic from 'next/dynamic';
+// Dynamically import components that might cause SSR issues
+const NavbarMenu = dynamic(() => import('@/components/NavbarMenu'), {
+  ssr: false,
+});
+const SocialMediaContact = dynamic(
+  () => import('@/components/SocialMediaContact'),
+  { ssr: false },
+);
+const ProjectCards = dynamic(() => import('@/components/ProjectCards'), {
+  ssr: false,
+});
+const ContactForm = dynamic(() => import('@/components/ContactForm'), {
+  ssr: false,
+});
+const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
+const Experience = dynamic(() => import('@/components/Experience'), {
+  ssr: false,
+});
+const AboutMeCard = dynamic(() => import('@/components/AboutMeCard'), {
+  ssr: false,
+});
+const LandingPage = dynamic(() => import('@/components/LandingPage'), {
+  ssr: false,
+});
 
 export default function Home() {
   const myRef = useRef<MutableRefObject<HTMLDivElement>>(null);
-  const contactRef = useRef<MutableRefObject<HTMLDivElement>>(null);
-  const [fadeOutClassName, setFadeOutClassName] = useState('');
   const [mobileNavbarIsOpen, setMobileNavbarIsOpen] = useState(false);
-
-  useEffect(() => {
-    document.getElementById('tsparticles')?.classList.add('h-full', 'w-full');
-  }, []);
-
-  useEffect(() => {
-    setFadeOutClassName('opacity-100');
-  }, []);
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   return (
     <main
@@ -42,7 +44,7 @@ export default function Home() {
       />
       <SocialMediaContact />
       <section className="flex min-h-screen relative" id="section-LandingPage">
-        <LandingPage fadeOutClassName={fadeOutClassName} />
+        <LandingPage />
       </section>
 
       <section
@@ -67,12 +69,7 @@ export default function Home() {
         className="flex min-h-[80dvh] justify-center items-center w-full"
         id="section-contact"
       >
-        <div
-          className="max-w-5xl p-0 sm:p-[3rem] md:p-0 w-[90%] sm:w-full"
-          ref={contactRef as any}
-        >
-          <ContactForm />
-        </div>
+        <ContactForm siteKey={siteKey} />
       </section>
       <section>
         <Footer />

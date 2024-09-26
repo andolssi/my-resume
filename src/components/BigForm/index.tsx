@@ -18,9 +18,11 @@ import Step12 from './Steps/Step12/Step12';
 const BigForm = ({
   step,
   setStep,
+  reCAPTCHASiteKey,
 }: {
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  reCAPTCHASiteKey?: string;
 }) => {
   const [resultData, setResultData] = useState<IresultData>({ tolerance: 1 });
   const [subSteps, setSubSteps] = useState<number>(0);
@@ -31,7 +33,7 @@ const BigForm = ({
   };
 
   return (
-    <div className="w-full xl:max-w-[75%]">
+    <div className="w-full xl:max-w-[75%] flex flex-col items-center">
       <div className="flex flex-col w-full items-center">
         <h2 className="text-xl font-medium leading-7 text-gray-900 dark:text-gray-200">
           Bienvenue{' '}
@@ -41,24 +43,36 @@ const BigForm = ({
           Prenez votre temps ...
         </p>
       </div>
-      <div className="flex flex-row justify-center" onClick={handleStep(1)}>
-        {resultData.criteria?.map((el, index) => (
-          <h3
-            key={`${el}${index}`}
-            className={`m-3 ${
-              el === resultData.evaluation?.mostImportantCriterion.criterion
-                ? 'text-[--primary-color] font-semibold'
-                : ''
-            } ${
-              el === resultData.evaluation?.lessImportantCriterion?.criterion
-                ? 'text-[--primary-secondary] font-semibold'
-                : ''
-            }`}
+      {resultData.criteria && (
+        <div className="has-tooltip w-fit">
+          <span className="tooltip rounded-md shadow-lg bg-black/50 text-white mt-10 p-2">
+            cliquez pour modifier les critères
+          </span>
+          <div
+            className="flex flex-row justify-center select-none cursor-pointer"
+            onClick={handleStep(1)}
           >
-            {el}
-          </h3>
-        ))}
-      </div>
+            {resultData.criteria?.map((el, index) => (
+              <h3
+                key={`${el}${index}`}
+                className={`m-3 ${
+                  el === resultData.evaluation?.mostImportantCriterion.criterion
+                    ? 'text-[--primary-color] font-semibold'
+                    : ''
+                } ${
+                  el ===
+                  resultData.evaluation?.lessImportantCriterion?.criterion
+                    ? 'text-[--primary-secondary] font-semibold'
+                    : ''
+                }`}
+              >
+                {el}
+              </h3>
+            ))}
+          </div>
+        </div>
+      )}
+
       {step === 1 && (
         <div className={`${step === 1 ? 'block' : 'hidden'}`}>
           <Step01
@@ -67,6 +81,7 @@ const BigForm = ({
             setStep={setStep}
             setResultData={setResultData}
             resultData={resultData}
+            reCAPTCHASiteKey={reCAPTCHASiteKey}
           />
         </div>
       )}
@@ -291,6 +306,7 @@ const BigForm = ({
                 setStep={setStep}
                 setResultData={setResultData}
                 resultData={resultData}
+                reCAPTCHASiteKey={reCAPTCHASiteKey}
               />
             )}
           </React.Fragment>

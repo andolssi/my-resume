@@ -30,7 +30,7 @@ const ThemePreferenceProvider = ({
 
   useEffect(() => {
     const setThemePreference = () => {
-      if (autoTheme) {
+      if (autoTheme && window) {
         const isDarkMode =
           window.matchMedia &&
           window.matchMedia('(prefers-color-scheme: dark)').matches;

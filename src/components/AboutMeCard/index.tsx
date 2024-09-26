@@ -54,7 +54,7 @@ const AboutMeCard = () => {
 
       <div className="flex justify-center w-full relative py-2 mt-12">
         <div className="absolute left-0 top-0 w-full h-full bg-slate-100 dark:bg-slate-800 blur-md opacity-70" />
-        <div className="max-w-5xl w-full">
+        <div className="max-w-5xl w-full select-none cursor-pointer">
           <Carousel
             slides={Array.from(Array(logoLinks.length).keys())}
             options={{

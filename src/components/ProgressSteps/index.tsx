@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ProgressButtons({ step }: { step: number }) {
+function ProgressSteps({ step }: { step: number }) {
   return (
     <div className="mt-4 w-dvw flex flex-row items-center justify-center select-none">
       <div className="flex flex-row gap-3">
@@ -19,4 +19,4 @@ function ProgressButtons({ step }: { step: number }) {
   );
 }
 
-export default ProgressButtons;
+export default ProgressSteps;
