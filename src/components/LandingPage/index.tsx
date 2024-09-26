@@ -1,11 +1,17 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import ParticlesComponent from '../ParticlesComponent';
 import { useTheme } from '@/components/ThemePreferenceProvider';
 
-const LandingPage = ({ fadeOutClassName }: { fadeOutClassName: string }) => {
+const LandingPage = () => {
+  const [fadeOutClassName, setFadeOutClassName] = useState('');
   const { theme } = useTheme();
+
+  useEffect(() => {
+    document.getElementById('tsparticles')?.classList.add('h-full', 'w-full');
+    setFadeOutClassName('opacity-100');
+  }, []);
 
   return (
     <>

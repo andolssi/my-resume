@@ -33,14 +33,14 @@ export const useStep04 = (setStep: React.Dispatch<React.SetStateAction<number>>,
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         // Check for duplicate terms in relations
-        const terms = data.question4.map(relation => relation.split('-')[0]);
-        if (new Set(terms).size !== terms.length) {
-            setError(`question4.${resultData.evaluation?.mostImportantCriterion.criterion}`, {
-                type: "manual",
-                message: "Vous avez sélectionné le même terme pour plusieurs relations. Veuillez vous assurer que chaque relation a un terme unique avant de soumettre."
-            });
-            return;
-        }
+        // const terms = data.question4.map(relation => relation.split('-')[0]);
+        // if (new Set(terms).size !== terms.length) {
+        //     setError(`question4.${resultData.evaluation?.mostImportantCriterion.criterion}`, {
+        //         type: "manual",
+        //         message: "Vous avez sélectionné le même terme pour plusieurs relations. Veuillez vous assurer que chaque relation a un terme unique avant de soumettre."
+        //     });
+        //     return;
+        // }
 
         setIsSubmitting(true);
 

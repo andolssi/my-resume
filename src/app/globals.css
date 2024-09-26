@@ -27,6 +27,20 @@ body {
 }
 
 /* ************************************************* */
+.has-tooltip {
+  position: relative;
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 50;
+}
+/* ************************************************* */
 
 .embla {
   --slide-spacing: 1rem;

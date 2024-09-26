@@ -21,19 +21,8 @@ const Step11 = ({
   setResultData: React.Dispatch<React.SetStateAction<IresultData>>;
   resultData: IresultData;
 }) => {
-  const {
-    isSubmitting,
-    form,
-    onSubmit,
-    handleSubmit,
-    register,
-    errors,
-    watch,
-  } = useStep11(setStep, setResultData, resultData);
-
-  if (!process.env.NEXT_PUBLIC_reCAPTCHA_site_key) {
-    return;
-  }
+  const { isSubmitting, form, onSubmit, handleSubmit, register, errors } =
+    useStep11(setStep, setResultData, resultData);
 
   if (!resultData.evaluation || !resultData.evaluation.subCriteriaEvaluation)
     return;

@@ -13,12 +13,14 @@ const Step01 = ({
   setStep,
   setResultData,
   resultData,
+  reCAPTCHASiteKey,
 }: {
   questionNumber: string;
   question: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setResultData: React.Dispatch<React.SetStateAction<IresultData>>;
   resultData: IresultData;
+  reCAPTCHASiteKey: string | undefined;
 }) => {
   const {
     isSubmitting,
@@ -28,7 +30,6 @@ const Step01 = ({
     register,
     errors,
     reCaptchaRef,
-    onChangeRef,
     fields,
     handleRemove,
     handleAppend,
@@ -36,7 +37,7 @@ const Step01 = ({
     handleRecaptchaToken,
   } = useStep01(setStep, setResultData, resultData);
 
-  if (!process.env.NEXT_PUBLIC_reCAPTCHA_site_key) {
+  if (!reCAPTCHASiteKey) {
     return;
   }
 
@@ -103,7 +104,7 @@ const Step01 = ({
               size="invisible"
               ref={reCaptchaRef}
               onChange={handleRecaptchaToken}
-              sitekey={process.env.NEXT_PUBLIC_reCAPTCHA_site_key}
+              sitekey={reCAPTCHASiteKey}
               onError={recaptchaError}
             />
             <button

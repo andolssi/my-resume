@@ -36,10 +36,6 @@ const Step02 = ({
     handleRemove,
   } = useStep02(setStep, setResultData, resultData, criterion, setSubSteps);
 
-  if (!process.env.NEXT_PUBLIC_reCAPTCHA_site_key) {
-    return;
-  }
-
   return (
     <div className="flex flex-col md:flex-row gap-8 font-semibold text-base dark:text-stone-200 w-full">
       <StepDescription step={Number(questionNumber)} />

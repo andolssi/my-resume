@@ -32,25 +32,25 @@ export const useStep09 = (setStep: React.Dispatch<React.SetStateAction<number>>,
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         // Check for duplicate terms in relations for each criterion
-        const criteriaWithDuplicates = Object.entries(data.question9 || {}).reduce((acc, [criterionName, relations]) => {
-            if (!Array.isArray(relations)) return acc;
+        // const criteriaWithDuplicates = Object.entries(data.question9 || {}).reduce((acc, [criterionName, relations]) => {
+        //     if (!Array.isArray(relations)) return acc;
 
-            const terms = relations.map(relation => relation.split('-')[0]);
-            if (new Set(terms).size !== terms.length) {
-                acc.push(criterionName);
-            }
-            return acc;
-        }, [] as string[]);
+        //     const terms = relations.map(relation => relation.split('-')[0]);
+        //     if (new Set(terms).size !== terms.length) {
+        //         acc.push(criterionName);
+        //     }
+        //     return acc;
+        // }, [] as string[]);
 
-        if (criteriaWithDuplicates.length > 0) {
-            criteriaWithDuplicates.forEach(criterionName => {
-                setError(`question9.${criterionName}`, {
-                    type: "manual",
-                    message: "Vous avez sélectionné le même terme pour plusieurs relations dans ce critère. Veuillez vous assurer que chaque relation a un terme unique avant de soumettre."
-                });
-            });
-            return;
-        }
+        // if (criteriaWithDuplicates.length > 0) {
+        //     criteriaWithDuplicates.forEach(criterionName => {
+        //         setError(`question9.${criterionName}`, {
+        //             type: "manual",
+        //             message: "Vous avez sélectionné le même terme pour plusieurs relations dans ce critère. Veuillez vous assurer que chaque relation a un terme unique avant de soumettre."
+        //         });
+        //     });
+        //     return;
+        // }
         setIsSubmitting(true);
 
         setResultData((prev) => {
