@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { IresultData } from '@/types/bigFormDataType';
 import { useRouter } from 'next/navigation';
-import { calculateSimplex } from '@/app/actions/calculateSimplex';
 
 const ResultDataPresentation: React.FC<{ data: IresultData }> = ({ data }) => {
   const router = useRouter();
