@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import DetailedSimplexResults from '@/components/DetailedSimplexResults';
 import { IFinalResultData, ISetOfCriteria } from '@/types/bigFormDataType';
-import { calculateSimplex } from '@/app/actions/calculateSimplex';
 import convertSubCriteriaToCriteria from '@/helpers/convertSubCriteriaToCriteria';
 import { LpProblemData } from '@/types/formattedData';
 import formateFormData from '@/helpers/formateFormData';
@@ -11,6 +10,7 @@ import { complexResultType } from '@/types/complexResultType';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import WeightsResults from '@/components/WeightsResults';
+import { calculateSimplex } from '@/app/actions/calculateSimplex';
 
 export default function SecondStepPage() {
   const [isProcessing, setIsProcessing] = useState(false);

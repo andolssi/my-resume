@@ -1,7 +1,6 @@
 'use server'
 
 import { spawn } from 'child_process';
-import { IresultData } from '@/types/bigFormDataType';
 import path from 'path';
 import { LpProblemData } from '@/types/formattedData';
 import { complexResultType } from '@/types/complexResultType';
