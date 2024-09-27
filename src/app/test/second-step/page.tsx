@@ -103,27 +103,23 @@ export default function SecondStepPage() {
           ? 'Processing...'
           : 'Fuzzy Multi-criteria BWM Calculation'}
       </h1>
-      {(!isData || !simplexResult) && (
-        <>
-          {!isProcessing && (
-            <div className="flex flex-col items-center">
-              <h2 className="text-lg font-semibold text-red-600 mb-4">
-                Données manquantes. Veuillez retourner au formulaire pour créer
-                une nouvelle évaluation.
-              </h2>
-              <button
-                onClick={() =>
-                  window !== undefined
-                    ? (window.location.href = '/test')
-                    : console.log
-                } // Redirect to home page
-                className="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out"
-              >
-                Retour à l'accueil
-              </button>
-            </div>
-          )}
-        </>
+      {(!isData || !simplexResult) && !isProcessing && (
+        <div className="flex flex-col items-center">
+          <h2 className="text-lg font-semibold text-red-600 mb-4">
+            Données manquantes. Veuillez retourner au formulaire pour créer une
+            nouvelle évaluation.
+          </h2>
+          <button
+            onClick={() =>
+              window !== undefined
+                ? (window.location.href = '/test')
+                : console.log
+            } // Redirect to home page
+            className="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out"
+          >
+            Retour à l'accueil
+          </button>
+        </div>
       )}
       {simplexResult && <DetailedSimplexResults result={simplexResult} />}
       {simplexResult && formFormattedData && (
