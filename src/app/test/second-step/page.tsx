@@ -13,7 +13,8 @@ import WeightsResults from '@/components/WeightsResults';
 import { calculateSimplex } from '@/app/actions/calculateSimplex';
 
 export default function SecondStepPage() {
-  const [isProcessing, setIsProcessing] = useState(false);
+  const [isData, setIsData] = useState(true);
+  const [isProcessing, setIsProcessing] = useState(true);
   const [simplexResult, setSimplexResult] = useState<
     complexResultType[] | null
   >(null);
@@ -64,6 +65,7 @@ export default function SecondStepPage() {
       });
       console.log({
         problemsToSolve,
+        problemsToSolveAsString: JSON.stringify(problemsToSolve),
       });
 
       await calculateSimplex(problemsToSolve).then(setSimplexResult);
@@ -74,7 +76,7 @@ export default function SecondStepPage() {
       console.error('Error calculating simplex:', error);
     } finally {
       // TODO:show a message to the user
-      toast('🎉 Cheers to the finish line of the first part!');
+      simplexResult && toast('🎉 Cheers to the finish line of the first part!');
       setIsProcessing(false);
     }
   };
@@ -83,7 +85,11 @@ export default function SecondStepPage() {
     const formData = localStorage.getItem('finalResultData');
 
     if (formData) {
+      setIsData(true);
       processData(JSON.parse(formData) as unknown as IFinalResultData);
+    } else {
+      setIsData(false);
+      toast('Données manquantes!!');
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -97,6 +103,24 @@ export default function SecondStepPage() {
           ? 'Processing...'
           : 'Fuzzy Multi-criteria BWM Calculation'}
       </h1>
+      {(!isData || !simplexResult) && !isProcessing && (
+        <div className="flex flex-col items-center">
+          <h2 className="text-lg font-semibold text-red-600 mb-4">
+            Données manquantes. Veuillez retourner au formulaire pour créer une
+            nouvelle évaluation.
+          </h2>
+          <button
+            onClick={() =>
+              window !== undefined
+                ? (window.location.href = '/test')
+                : console.log
+            } // Redirect to home page
+            className="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out"
+          >
+            Retour à l'accueil
+          </button>
+        </div>
+      )}
       {simplexResult && <DetailedSimplexResults result={simplexResult} />}
       {simplexResult && formFormattedData && (
         <WeightsResults
@@ -104,7 +128,6 @@ export default function SecondStepPage() {
           formFormattedData={formFormattedData}
         />
       )}
-      {/* {simplexResult && <p>{JSON.stringify(simplexResult)}</p>} */}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { LpProblemData } from "@/types/formattedData"
 import translateFuzzyNumbersOfCriteria from "./translateFuzzyNumbersOfCriteria";
 import formateConstraints from "./formateConstraints";
 import generateLastPartConstraints from "./generateLastPartConstraints";
+import determineModelType from "./determineModelType";
 
 
 
@@ -20,20 +21,8 @@ const formateFormData = (data: ISetOfCriteria): LpProblemData => {
     }
 
     // Define the name of the model type
-    let modelType: "optimistic" | "pessimistic" | "neutral1" | "neutral2" = 'neutral1'; // default
-    if (enduringConsideration.considereCriterionForeverMostImportant &&
-        enduringConsideration.considereCriterionForeverLessImportant) {
-        modelType = 'optimistic';
-    } else if (!enduringConsideration.considereCriterionForeverMostImportant &&
-        !enduringConsideration.considereCriterionForeverLessImportant) {
-        modelType = 'pessimistic';
-    } else if (enduringConsideration.considereCriterionForeverMostImportant &&
-        !enduringConsideration.considereCriterionForeverLessImportant) {
-        modelType = 'neutral1';
-    } else if (!enduringConsideration.considereCriterionForeverMostImportant &&
-        enduringConsideration.considereCriterionForeverLessImportant) {
-        modelType = 'neutral2';
-    }
+    let modelType: "optimistic" | "pessimistic" | "neutral1" | "neutral2" = determineModelType(enduringConsideration.considereCriterionForeverMostImportant, enduringConsideration.considereCriterionForeverLessImportant) || 'neutral1'; // default
+
 
     // Define variables
     const variables: LpProblemData['variables'] = [{ name: "b", lowerBound: 0, upperBound: 1 }]

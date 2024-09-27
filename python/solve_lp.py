@@ -21,7 +21,7 @@ def solve_lp(data):
 
     # Add constraints
     for constraint in data['constraints']:
-        model += eval(constraint['expression'], {}, variables)
+        model += eval(constraint['expression'], {"__builtins__": None}, variables)
 
     model += 0<=b
     model += b<=1
