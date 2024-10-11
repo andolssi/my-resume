@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import DetailedSimplexResults from '@/components/DetailedSimplexResults';
 import { IFinalResultData, ISetOfCriteria } from '@/types/bigFormDataType';
 import convertSubCriteriaToCriteria from '@/helpers/convertSubCriteriaToCriteria';
@@ -11,8 +11,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import WeightsResults from '@/components/WeightsResults';
 import { calculateSimplex } from '@/app/actions/calculateSimplex';
+import determineModelType from '@/helpers/determineModelType';
+import { generateTheProblem } from '@/app/actions/generateTheProblem';
+import { useIsMounted } from '@/helpers/useIsMounted';
 
 export default function SecondStepPage() {
+  const isMounted = useIsMounted();
   const [isData, setIsData] = useState(true);
   const [isProcessing, setIsProcessing] = useState(true);
   const [simplexResult, setSimplexResult] = useState<
@@ -24,72 +28,93 @@ export default function SecondStepPage() {
 
   console.log({ simplexResult });
 
-  const processData = async (data: IFinalResultData) => {
-    if (simplexResult) return;
+  const processData = useMemo(
+    () => async (data: IFinalResultData) => {
+      if (simplexResult) return;
 
-    setIsProcessing(true);
-    const arrayOfCriteriaData: ISetOfCriteria[] = [
-      {
-        identification: {
-          isSubCriteria: false,
-        },
-        criteria: data.criteria,
-        evaluation: {
-          mostImportantCriterion: {
-            criterion: data.evaluation.mostImportantCriterion.criterion,
-            relations: data.evaluation.mostImportantCriterion.relations,
+      setIsProcessing(true);
+      const enduringConsideration = {
+        considereCriterionForeverLessImportant:
+          data.enduringConsideration.considereCriterionForeverLessImportant,
+        considereCriterionForeverMostImportant:
+          data.enduringConsideration.considereCriterionForeverMostImportant,
+      };
+
+      const modelType: 'optimistic' | 'pessimistic' | 'neutral1' | 'neutral2' =
+        determineModelType(
+          enduringConsideration.considereCriterionForeverMostImportant,
+          enduringConsideration.considereCriterionForeverLessImportant,
+        ) || 'neutral1'; // default
+
+      const arrayOfCriteriaData: ISetOfCriteria[] = [
+        {
+          identification: {
+            isSubCriteria: false,
           },
-          lessImportantCriterion: {
-            criterion: data.evaluation.lessImportantCriterion.criterion,
-            relations: data.evaluation.lessImportantCriterion.relations,
+          criteria: data.criteria,
+          evaluation: {
+            mostImportantCriterion: {
+              criterion: data.evaluation.mostImportantCriterion.criterion,
+              relations: data.evaluation.mostImportantCriterion.relations,
+            },
+            lessImportantCriterion: {
+              criterion: data.evaluation.lessImportantCriterion.criterion,
+              relations: data.evaluation.lessImportantCriterion.relations,
+            },
           },
+          modelType,
         },
-        enduringConsideration: {
-          considereCriterionForeverLessImportant:
-            data.enduringConsideration.considereCriterionForeverLessImportant,
-          considereCriterionForeverMostImportant:
-            data.enduringConsideration.considereCriterionForeverMostImportant,
-        },
-      },
-    ];
+      ];
 
-    data.criteria.forEach((criterion) => {
-      arrayOfCriteriaData.push(convertSubCriteriaToCriteria(criterion, data));
-    });
-    setFormFormattedData(arrayOfCriteriaData);
-
-    try {
-      const problemsToSolve: LpProblemData[] = [];
-      arrayOfCriteriaData.forEach((setOfCriteria) => {
-        problemsToSolve.push(formateFormData(setOfCriteria));
+      data.criteria.forEach((criterion) => {
+        arrayOfCriteriaData.push(convertSubCriteriaToCriteria(criterion, data));
       });
-      console.log({
-        problemsToSolve,
-        problemsToSolveAsString: JSON.stringify(problemsToSolve),
-      });
+      setFormFormattedData(arrayOfCriteriaData);
 
-      await calculateSimplex(problemsToSolve).then(setSimplexResult);
-      // console.log({ results }); // 👈️ this is the result you need to use
-
-      // const result: complexResultType = await calculateSimplex(data);
-    } catch (error) {
-      console.error('Error calculating simplex:', error);
-    } finally {
-      // TODO:show a message to the user
-      simplexResult && toast('🎉 Cheers to the finish line of the first part!');
-      setIsProcessing(false);
-    }
-  };
+      try {
+        const problemsToSolve: LpProblemData[] = [];
+        arrayOfCriteriaData.forEach((setOfCriteria) => {
+          problemsToSolve.push(formateFormData(setOfCriteria));
+        });
+        // console.log({
+        //   newProblemsToSolve: arrayOfCriteriaData,
+        //   newProblemsToSolveAsString: JSON.stringify(arrayOfCriteriaData),
+        // });
+        // TODO: ici on doit générer les problèmes et les résoudre en parallèle(promise.all)
+        // await generateTheProblem(problemsToSolve).catch((error) => {
+        //   console.error('Error When Generate The Problem:', error);
+        // });
+        // for (let index = 0; index < problemsToSolve.length; index++) {
+        //   const element = problemsToSolve[index];
+        //   await calculateSimplex(`generated_dynamic_fuzzy_bwm${index}.py`).then(
+        //     (result) =>
+        //       setSimplexResult((prev) => (prev ? [...prev, result] : [result])),
+        //   );
+        // }
+        await calculateSimplex(problemsToSolve).then(setSimplexResult);
+      } catch (error) {
+        console.error('Error calculating simplex:', error);
+      } finally {
+        // TODO:show a message to the user
+        simplexResult &&
+          toast('🎉 Cheers to the finish line of the first part!');
+        setIsProcessing(false);
+      }
+    },
+    [simplexResult],
+  );
 
   useEffect(() => {
-    const formData = localStorage.getItem('finalResultData');
+    if (isMounted()) {
+      const formData = localStorage.getItem('finalResultData');
 
-    if (formData) {
-      setIsData(true);
-      processData(JSON.parse(formData) as unknown as IFinalResultData);
-    } else {
-      setIsData(false);
-      toast('Données manquantes!!');
+      if (formData) {
+        setIsData(true);
+        processData(JSON.parse(formData) as IFinalResultData);
+      } else {
+        setIsData(false);
+        toast('Données manquantes!!');
+      }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

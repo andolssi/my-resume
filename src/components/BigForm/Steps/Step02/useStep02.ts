@@ -13,9 +13,9 @@ const schema = z.object({
 type SubCriterion = z.infer<typeof schema>["question2"][number];
 
 const question2Initial: SubCriterion[] = [
-    { subCriterion: "subCriterion 1" },
-    { subCriterion: "subCriterion 2" },
-    { subCriterion: "subCriterion 3" }
+    { subCriterion: "C1" },
+    { subCriterion: "C2" },
+    { subCriterion: "C3" }
 ]
 
 function useZodForm<TSchema extends z.ZodType>(

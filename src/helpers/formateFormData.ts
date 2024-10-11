@@ -1,4 +1,4 @@
-import { ISetOfCriteria } from "@/types/bigFormDataType"
+import { ISetOfCriteria, ITranslatedFuzzyNumber } from "@/types/bigFormDataType"
 import { LpProblemData } from "@/types/formattedData"
 import translateFuzzyNumbersOfCriteria from "./translateFuzzyNumbersOfCriteria";
 import formateConstraints from "./formateConstraints";
@@ -8,7 +8,7 @@ import determineModelType from "./determineModelType";
 
 
 const formateFormData = (data: ISetOfCriteria): LpProblemData => {
-    const { criteria, evaluation, enduringConsideration } = data;
+    const { criteria, evaluation, modelType } = data;
 
     if (!criteria || !evaluation || !evaluation.mostImportantCriterion || !evaluation.lessImportantCriterion) {
         throw new Error('Invalid input data');
@@ -21,8 +21,8 @@ const formateFormData = (data: ISetOfCriteria): LpProblemData => {
     }
 
     // Define the name of the model type
-    let modelType: "optimistic" | "pessimistic" | "neutral1" | "neutral2" = determineModelType(enduringConsideration.considereCriterionForeverMostImportant, enduringConsideration.considereCriterionForeverLessImportant) || 'neutral1'; // default
-
+    // const modelType: "optimistic" | "pessimistic" | "neutral1" | "neutral2" = determineModelType(enduringConsideration.considereCriterionForeverMostImportant, enduringConsideration.considereCriterionForeverLessImportant) || 'neutral1'; // default
+    // let modelType: "optimistic" | "pessimistic" | "neutral1" | "neutral2" = 'optimistic'; // default
 
     // Define variables
     const variables: LpProblemData['variables'] = [{ name: "b", lowerBound: 0, upperBound: 1 }]
@@ -35,14 +35,8 @@ const formateFormData = (data: ISetOfCriteria): LpProblemData => {
     });
 
     // Translate Fuzzy Numbers
-    const translatedFuzzyNumbersOfCriteria: {
-        bestRelations: {
-            [key: string]: string
-        }[],
-        worstRelations: {
-            [key: string]: string
-        }[]
-    } = translateFuzzyNumbersOfCriteria(evaluation, criteria);
+    const translatedFuzzyNumbersOfCriteria: ITranslatedFuzzyNumber = translateFuzzyNumbersOfCriteria(evaluation, criteria);
+
 
     // Define constraints
     const constraints: LpProblemData['constraints'] = [];

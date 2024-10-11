@@ -64,7 +64,7 @@ const Step07 = ({
                        : ''
                    }`}
               >
-                <h1 className="pb-2 text-white p-1 bg-[--primary-color]">
+                <h1 className="pb-2 text-white p-1 bg-[--primary-color] min-w-24">
                   {criterion}
                 </h1>
                 {resultData.subCriteria?.[criterion].map((subCriterion, i) => (

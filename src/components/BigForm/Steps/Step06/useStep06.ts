@@ -4,6 +4,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { z } from "zod";
 import { IresultData } from '@/types/bigFormDataType';
+import { FuzzyImportance } from "@/helpers/fuzzyImportanceEnum";
 
 const schema = z.object({
     question6: z.array((z.string().min(2, { message: 'Select importance ↑' })
@@ -43,12 +44,18 @@ export const useStep06 = (setStep: React.Dispatch<React.SetStateAction<number>>,
 
         setIsSubmitting(true);
 
+
+        const oldRelation = resultData.evaluation?.mostImportantCriterion?.relations?.filter(el => {
+            return resultData.evaluation?.lessImportantCriterion?.criterion && el.includes(resultData.evaluation?.lessImportantCriterion?.criterion)
+        })[0].split('-')[0] + '-' + resultData.evaluation?.mostImportantCriterion?.criterion
+
         setResultData((prev) => (prev?.evaluation?.lessImportantCriterion ? {
             ...prev,
             evaluation: {
                 ...prev.evaluation, lessImportantCriterion: {
                     ...prev.evaluation.lessImportantCriterion,
-                    relations: data.question6
+                    relations: oldRelation ? [oldRelation, ...data.question6] : data.question6
+                    // relations: [`${FuzzyImportance.EgalementImportant}-${prev.evaluation.lessImportantCriterion.criterion}`, ...data.question6]
                 }
             }
         } : prev));
@@ -59,11 +66,15 @@ export const useStep06 = (setStep: React.Dispatch<React.SetStateAction<number>>,
 
     };
 
+    const criteriaToExclude = [
+        resultData.evaluation?.mostImportantCriterion?.criterion,
+        resultData.evaluation?.lessImportantCriterion?.criterion
+    ];
 
     const comparedCriteria = (resultData.criteria as string[]).filter(
         (el) =>
             resultData.evaluation &&
-            el !== resultData.evaluation.lessImportantCriterion?.criterion,
+            !criteriaToExclude.includes(el),
     )
 
 

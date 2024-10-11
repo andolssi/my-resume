@@ -4,7 +4,6 @@ import './globals.css';
 import SocialMediaContact from '@/components/SocialMediaContact';
 import { Analytics } from '@vercel/analytics/react';
 import ThemePreferenceProvider from '@/components/ThemePreferenceProvider';
-import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -33,7 +32,7 @@ export default function RootLayout({
           className={`${quicksand.variable} ${source_Code_Pro.variable} font-sans dark:bg-slate-800`}
         >
           <SocialMediaContact />
-          <ErrorBoundary>{children}</ErrorBoundary>
+          {children}
           <Analytics />
         </body>
       </ThemePreferenceProvider>

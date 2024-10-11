@@ -4,6 +4,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { z } from "zod";
 import { IresultData } from '@/types/bigFormDataType';
+import { FuzzyImportance } from "@/helpers/fuzzyImportanceEnum";
 
 const schema = z.object({
     question4: z.array((z.string().min(2, { message: 'Select importance ↑' })
@@ -50,6 +51,7 @@ export const useStep04 = (setStep: React.Dispatch<React.SetStateAction<number>>,
                 ...prev.evaluation, mostImportantCriterion: {
                     ...prev.evaluation.mostImportantCriterion,
                     relations: data.question4
+                    // relations: [`${FuzzyImportance.EgalementImportant}-${prev.evaluation.mostImportantCriterion.criterion}`, ...data.question4]
                 }
             }
         } : prev));

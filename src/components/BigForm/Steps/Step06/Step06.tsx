@@ -6,14 +6,7 @@ import StepDescription from '../../StepDescription';
 import { IresultData } from '@/types/bigFormDataType';
 import { useStep06 } from './useStep06';
 import FormComponent from '@/components/FormComponent';
-
-export const TERMES_LINGUISTIQUE = [
-  'Egalement important',
-  'Faiblement important',
-  'Assez important',
-  'Très important',
-  'Absolument important',
-];
+import { TERMES_LINGUISTIQUE } from '@/helpers/termesLinguistique';
 
 const Step06 = ({
   questionNumber,
