@@ -5,8 +5,8 @@ import Image from 'next/image';
 import StepDescription from '../../StepDescription';
 import { IresultData } from '@/types/bigFormDataType';
 import { useStep10 } from './useStep10';
-import { TERMES_LINGUISTIQUE } from '../Step06/Step06';
 import FormComponent from '@/components/FormComponent';
+import { TERMES_LINGUISTIQUE } from '@/helpers/termesLinguistique';
 
 const Step10 = ({
   questionNumber,
@@ -70,9 +70,14 @@ const Step10 = ({
                 {resultData.subCriteria?.[criterion]
                   .filter(
                     (el) =>
-                      el !==
-                      resultData.evaluation?.subCriteriaEvaluation?.[criterion]
-                        .lessImportantSubCriterion?.subCriterion,
+                      ![
+                        resultData.evaluation?.subCriteriaEvaluation?.[
+                          criterion
+                        ].lessImportantSubCriterion?.subCriterion,
+                        resultData.evaluation?.subCriteriaEvaluation?.[
+                          criterion
+                        ].mostImportantSubCriterion?.subCriterion,
+                      ].includes(el),
                   )
                   .map((subCriteria, i) => (
                     <div key={subCriteria} className="flex flex-col my-4">

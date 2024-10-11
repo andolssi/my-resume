@@ -28,7 +28,7 @@ def solve_lp(data):
 
     # Solve the problem
     LpSolverDefault.msg = 1  # Enable more verbose output
-    status = model.solve(PULP_CBC_CMD(gapRel=0.0001))  # Adjust the tolerance here
+    status = model.solve(PULP_CBC_CMD(mip=False,gapRel=0.0001,strong=True,cuts=True))  # Adjust the tolerance here
 
     # Get the results
     results = {

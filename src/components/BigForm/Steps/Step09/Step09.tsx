@@ -5,8 +5,8 @@ import Image from 'next/image';
 import StepDescription from '../../StepDescription';
 import { IresultData } from '@/types/bigFormDataType';
 import { useStep09 } from './useStep09';
-import { TERMES_LINGUISTIQUE } from '../Step06/Step06';
 import FormComponent from '@/components/FormComponent';
+import { TERMES_LINGUISTIQUE } from '@/helpers/termesLinguistique';
 
 const Step09 = ({
   questionNumber,

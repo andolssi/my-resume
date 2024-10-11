@@ -46,7 +46,6 @@ export async function calculateSimplex(data: LpProblemData[]): Promise<complexRe
                 }
 
                 const jsonString = jsonMatch[0];
-                // console.log({ output });
 
                 const result = JSON.parse(jsonString);
                 resolve(result);

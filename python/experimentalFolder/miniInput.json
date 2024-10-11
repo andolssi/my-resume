@@ -1,0 +1,455 @@
+{
+    [
+        {
+            "identification": {
+                "isSubCriteria": false
+            },
+            "criteria": [
+                "Économiques",
+                "Social",
+                "Environnemental"
+            ],
+            "variables": [
+                {
+                    "name": "b",
+                    "lowerBound": 0,
+                    "upperBound": 1
+                },
+                {
+                    "name": "w1l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w1m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w1u",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2u",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3u",
+                    "lowerBound": 0
+                }
+            ],
+            "evaluation": {
+                "mostImportantCriterion": {
+                    "criterion": "Économiques",
+                    "relations": [
+                        "assez important-Social",
+                        "très important-Environnemental"
+                    ]
+                },
+                "lessImportantCriterion": {
+                    "criterion": "Environnemental",
+                    "relations": [
+                        "très important-Économiques",
+                        "assez important-Social"
+                    ]
+                }
+            },
+            "modelType": "neutral2",
+            "translatedFuzzyNumbersOfCriteria": {
+                "bestRelations": [
+                    {
+                        "w2l": "3/2"
+                    },
+                    {
+                        "w2m": "2"
+                    },
+                    {
+                        "w2u": "5/2"
+                    },
+                    {
+                        "w3l": "5/2"
+                    },
+                    {
+                        "w3m": "3"
+                    },
+                    {
+                        "w3u": "7/2"
+                    }
+                ],
+                "worstRelations": [
+                    {
+                        "w1l": "5/2"
+                    },
+                    {
+                        "w1m": "3"
+                    },
+                    {
+                        "w1u": "7/2"
+                    },
+                    {
+                        "w2l": "3/2"
+                    },
+                    {
+                        "w2m": "2"
+                    },
+                    {
+                        "w2u": "5/2"
+                    }
+                ]
+            }
+        },
+        {
+            "identification": {
+                "isSubCriteria": true,
+                "info": "subCriteria-Économiques"
+            },
+            "criteria": [
+                "C1",
+                "C2",
+                "C3"
+            ],
+            "variables": [
+                {
+                    "name": "b",
+                    "lowerBound": 0,
+                    "upperBound": 1
+                },
+                {
+                    "name": "w1l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w1m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w1u",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2u",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3u",
+                    "lowerBound": 0
+                }
+            ],
+            "evaluation": {
+                "mostImportantCriterion": {
+                    "criterion": "C3",
+                    "relations": [
+                        "absolument important-C1",
+                        "faiblement important-C2"
+                    ]
+                },
+                "lessImportantCriterion": {
+                    "criterion": "C1",
+                    "relations": [
+                        "absolument important-C1",
+                        "faiblement important-C2"
+                    ]
+                }
+            },
+            "modelType": "neutral2",
+            "translatedFuzzyNumbersOfCriteria": {
+                "bestRelations": [
+                    {
+                        "w2l": "3/2"
+                    },
+                    {
+                        "w2m": "2"
+                    },
+                    {
+                        "w2u": "5/2"
+                    },
+                    {
+                        "w3l": "5/2"
+                    },
+                    {
+                        "w3m": "3"
+                    },
+                    {
+                        "w3u": "7/2"
+                    }
+                ],
+                "worstRelations": [
+                    {
+                        "w1l": "5/2"
+                    },
+                    {
+                        "w1m": "3"
+                    },
+                    {
+                        "w1u": "7/2"
+                    },
+                    {
+                        "w2l": "3/2"
+                    },
+                    {
+                        "w2m": "2"
+                    },
+                    {
+                        "w2u": "5/2"
+                    }
+                ]
+            }
+        },
+        {
+            "identification": {
+                "isSubCriteria": true,
+                "info": "subCriteria-Social"
+            },
+            "criteria": [
+                "C4",
+                "C5",
+                "C6"
+            ],
+            "variables": [
+                {
+                    "name": "b",
+                    "lowerBound": 0,
+                    "upperBound": 1
+                },
+                {
+                    "name": "w1l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w1m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w1u",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2u",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3u",
+                    "lowerBound": 0
+                }
+            ],
+            "evaluation": {
+                "mostImportantCriterion": {
+                    "criterion": "C4",
+                    "relations": [
+                        "faiblement important-C5",
+                        "très important-C6"
+                    ]
+                },
+                "lessImportantCriterion": {
+                    "criterion": "C6",
+                    "relations": [
+                        "faiblement important-C5",
+                        "très important-C6"
+                    ]
+                }
+            },
+            "modelType": "neutral2",
+            "translatedFuzzyNumbersOfCriteria": {
+                "bestRelations": [
+                    {
+                        "w2l": "3/2"
+                    },
+                    {
+                        "w2m": "2"
+                    },
+                    {
+                        "w2u": "5/2"
+                    },
+                    {
+                        "w3l": "5/2"
+                    },
+                    {
+                        "w3m": "3"
+                    },
+                    {
+                        "w3u": "7/2"
+                    }
+                ],
+                "worstRelations": [
+                    {
+                        "w1l": "5/2"
+                    },
+                    {
+                        "w1m": "3"
+                    },
+                    {
+                        "w1u": "7/2"
+                    },
+                    {
+                        "w2l": "3/2"
+                    },
+                    {
+                        "w2m": "2"
+                    },
+                    {
+                        "w2u": "5/2"
+                    }
+                ]
+            }
+        },
+        {
+            "identification": {
+                "isSubCriteria": true,
+                "info": "subCriteria-Environnemental"
+            },
+            "criteria": [
+                "C7",
+                "C8",
+                "C9"
+            ],
+            "variables": [
+                {
+                    "name": "b",
+                    "lowerBound": 0,
+                    "upperBound": 1
+                },
+                {
+                    "name": "w1l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w1m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w1u",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w2u",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3l",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3m",
+                    "lowerBound": 0
+                },
+                {
+                    "name": "w3u",
+                    "lowerBound": 0
+                }
+            ],
+            "evaluation": {
+                "mostImportantCriterion": {
+                    "criterion": "C7",
+                    "relations": [
+                        "très important-C8",
+                        "absolument important-C9"
+                    ]
+                },
+                "lessImportantCriterion": {
+                    "criterion": "C9",
+                    "relations": [
+                        "très important-C8",
+                        "absolument important-C9"
+                    ]
+                }
+            },
+            "modelType": "neutral2",
+            "translatedFuzzyNumbersOfCriteria": {
+                "bestRelations": [
+                    {
+                        "w2l": "3/2"
+                    },
+                    {
+                        "w2m": "2"
+                    },
+                    {
+                        "w2u": "5/2"
+                    },
+                    {
+                        "w3l": "5/2"
+                    },
+                    {
+                        "w3m": "3"
+                    },
+                    {
+                        "w3u": "7/2"
+                    }
+                ],
+                "worstRelations": [
+                    {
+                        "w1l": "5/2"
+                    },
+                    {
+                        "w1m": "3"
+                    },
+                    {
+                        "w1u": "7/2"
+                    },
+                    {
+                        "w2l": "3/2"
+                    },
+                    {
+                        "w2m": "2"
+                    },
+                    {
+                        "w2u": "5/2"
+                    }
+                ]
+            }
+        }
+    ]
+}

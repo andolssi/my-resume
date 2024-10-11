@@ -93,8 +93,16 @@ export interface ISetOfCriteria {
             relations: string[];
         };
     };
-    enduringConsideration: {
-        considereCriterionForeverLessImportant: boolean;
-        considereCriterionForeverMostImportant: boolean;
-    };
+    modelType: "optimistic" | "pessimistic" | "neutral1" | "neutral2";
+}
+
+
+
+export interface ITranslatedFuzzyNumber {
+    bestRelations: {
+        [key: string]: string;
+    }[];
+    worstRelations: {
+        [key: string]: string;
+    }[];
 }

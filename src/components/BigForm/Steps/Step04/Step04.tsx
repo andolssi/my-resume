@@ -6,14 +6,7 @@ import Image from 'next/image';
 import StepDescription from '../../StepDescription';
 import { IresultData } from '@/types/bigFormDataType';
 import FormComponent from '@/components/FormComponent';
-
-const TERMES_LINGUISTIQUE = [
-  'Egalement important',
-  'Faiblement important',
-  'Assez important',
-  'Très important',
-  'Absolument important',
-];
+import { TERMES_LINGUISTIQUE } from '@/helpers/termesLinguistique';
 
 const Step04 = ({
   questionNumber,

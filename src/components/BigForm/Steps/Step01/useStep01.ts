@@ -14,9 +14,9 @@ const schema = z.object({
 type Criteria = z.infer<typeof schema>["question1"][number];
 
 const question1Initial: Criteria[] = [
-    { criteria: "Critère 1" },
-    { criteria: "Critère 2" },
-    { criteria: "Critère 3" }
+    { criteria: "Économiques" },
+    { criteria: "Social" },
+    { criteria: "Environnemental" }
 ];
 
 function useZodForm<TSchema extends z.ZodType>(

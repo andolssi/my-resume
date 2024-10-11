@@ -61,7 +61,9 @@ const Step08 = ({
                     : ''
                 }`}
               >
-                <h1 className="pb-2 text-white p-1 bg-black">{criterion}</h1>
+                <h1 className="pb-2 text-white p-1 bg-black min-w-24">
+                  {criterion}
+                </h1>
                 {resultData.subCriteria?.[criterion]
                   .filter(
                     (el) =>

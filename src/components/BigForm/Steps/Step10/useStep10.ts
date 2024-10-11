@@ -58,12 +58,17 @@ export const useStep10 = (setStep: React.Dispatch<React.SetStateAction<number>>,
             const updatedEvaluation = { ...prev.evaluation };
             Object.entries(data.question10 || {}).forEach(([criterionName, relations]) => {
                 if (!updatedEvaluation.subCriteriaEvaluation) return;
+                const oldRelation = resultData.evaluation?.subCriteriaEvaluation?.[criterionName].mostImportantSubCriterion?.relations?.filter(el => {
+                    return resultData.evaluation?.subCriteriaEvaluation?.[criterionName].lessImportantSubCriterion?.subCriterion && el.includes(resultData.evaluation?.subCriteriaEvaluation?.[criterionName].lessImportantSubCriterion?.subCriterion!)
+                })[0].split('-')[0] + '-' + resultData.evaluation?.subCriteriaEvaluation?.[criterionName].mostImportantSubCriterion?.subCriterion
+
+                console.log({ oldRelation, criterionName });
 
                 const subCriteria = updatedEvaluation.subCriteriaEvaluation[criterionName];
                 if (subCriteria?.lessImportantSubCriterion) {
                     subCriteria.lessImportantSubCriterion = {
                         ...subCriteria.lessImportantSubCriterion,
-                        relations: relations as string[]
+                        relations: [oldRelation, ...relations]
                     };
                 }
             });
