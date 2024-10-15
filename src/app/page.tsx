@@ -1,31 +1,14 @@
 'use client';
 
 import { useRef, MutableRefObject, LegacyRef, useState } from 'react';
-import dynamic from 'next/dynamic';
-// Dynamically import components that might cause SSR issues
-const NavbarMenu = dynamic(() => import('@/components/NavbarMenu'), {
-  ssr: false,
-});
-const SocialMediaContact = dynamic(
-  () => import('@/components/SocialMediaContact'),
-  { ssr: false },
-);
-const ProjectCards = dynamic(() => import('@/components/ProjectCards'), {
-  ssr: false,
-});
-const ContactForm = dynamic(() => import('@/components/ContactForm'), {
-  ssr: false,
-});
-const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
-const Experience = dynamic(() => import('@/components/Experience'), {
-  ssr: false,
-});
-const AboutMeCard = dynamic(() => import('@/components/AboutMeCard'), {
-  ssr: false,
-});
-const LandingPage = dynamic(() => import('@/components/LandingPage'), {
-  ssr: false,
-});
+import AboutMeCard from '@/components/AboutMeCard';
+import ContactForm from '@/components/ContactForm';
+import Experience from '@/components/Experience';
+import Footer from '@/components/Footer';
+import LandingPage from '@/components/LandingPage';
+import NavbarMenu from '@/components/NavbarMenu';
+import ProjectCards from '@/components/ProjectCards';
+import SocialMediaContact from '@/components/SocialMediaContact';
 
 export default function Home() {
   const myRef = useRef<MutableRefObject<HTMLDivElement>>(null);

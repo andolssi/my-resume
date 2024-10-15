@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "fastapi-dev": "pip3 install -r requirements.txt && python -m uvicorn api.index:app --reload",
+    "next-dev": "next dev",
+    "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --no-cache"
@@ -15,6 +17,7 @@
     "@vercel/analytics": "^1.1.1",
     "@vercel/python": "^4.3.1",
     "caniuse-lite": "^1.0.30001662",
+    "concurrently": "^9.0.1",
     "embla-carousel-autoplay": "^8.0.0-rc18",
     "embla-carousel-react": "^8.0.0-rc18",
     "next": "14.0.4",

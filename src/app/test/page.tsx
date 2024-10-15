@@ -1,13 +1,8 @@
 'use client';
 
+import BigForm from '@/components/BigForm';
+import ProgressSteps from '@/components/ProgressSteps';
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
-const BigForm = dynamic(() => import('@/components/BigForm'), {
-  ssr: false,
-});
-const ProgressSteps = dynamic(() => import('@/components/ProgressSteps'), {
-  ssr: false,
-});
 
 const MultiStepForm = () => {
   const [step, setStep] = useState(1);

@@ -10,9 +10,7 @@ import { complexResultType } from '@/types/complexResultType';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import WeightsResults from '@/components/WeightsResults';
-import { calculateSimplex } from '@/app/actions/calculateSimplex';
 import determineModelType from '@/helpers/determineModelType';
-import { generateTheProblem } from '@/app/actions/generateTheProblem';
 import { useIsMounted } from '@/helpers/useIsMounted';
 
 export default function SecondStepPage() {
@@ -76,22 +74,28 @@ export default function SecondStepPage() {
         arrayOfCriteriaData.forEach((setOfCriteria) => {
           problemsToSolve.push(formateFormData(setOfCriteria));
         });
-        // console.log({
-        //   newProblemsToSolve: arrayOfCriteriaData,
-        //   newProblemsToSolveAsString: JSON.stringify(arrayOfCriteriaData),
-        // });
-        // TODO: ici on doit générer les problèmes et les résoudre en parallèle(promise.all)
-        // await generateTheProblem(problemsToSolve).catch((error) => {
-        //   console.error('Error When Generate The Problem:', error);
-        // });
-        // for (let index = 0; index < problemsToSolve.length; index++) {
-        //   const element = problemsToSolve[index];
-        //   await calculateSimplex(`generated_dynamic_fuzzy_bwm${index}.py`).then(
-        //     (result) =>
-        //       setSimplexResult((prev) => (prev ? [...prev, result] : [result])),
-        //   );
-        // }
-        await calculateSimplex(problemsToSolve).then(setSimplexResult);
+        // healthcheck
+        await fetch('/api/healthcheck', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }).then((health) => console.log(health));
+
+        const response = await fetch('/api/solve', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(problemsToSolve),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        setSimplexResult(result);
       } catch (error) {
         console.error('Error calculating simplex:', error);
       } finally {
