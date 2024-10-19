@@ -80,7 +80,7 @@ export default function SecondStepPage() {
           headers: {
             'Content-Type': 'application/json',
           },
-        }).then((health) => console.log(health));
+        }).then((health) => console.log('health check: ' + health.statusText));
 
         const response = await fetch('/api/solve', {
           method: 'POST',
@@ -100,8 +100,7 @@ export default function SecondStepPage() {
         console.error('Error calculating simplex:', error);
       } finally {
         // TODO:show a message to the user
-        simplexResult &&
-          toast('🎉 Cheers to the finish line of the first part!');
+        toast<string>('🎉 Cheers to the finish line of the first part!');
         setIsProcessing(false);
       }
     },

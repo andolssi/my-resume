@@ -27,14 +27,13 @@ const useWeightsResults = (
         .map((setOfData, indexOfSubCriterion) => {
             const subCrResult: { id: string; initialWeight: number }[] = [];
             setOfData.criteria.forEach((criterion, index) => {
+                const weightResult = result[indexOfSubCriterion + 1];
                 subCrResult.push({
                     id: criterion,
                     initialWeight:
-                        ((result[indexOfSubCriterion + 1]?.variables?.[`w${index + 1}l`] +
-                            2 * (criteriaResult.variables?.[`w${index + 1}m`] as number) +
-                            criteriaResult.variables?.[`w${index + 1}u`]) *
-                            1) /
-                        4,
+                        (weightResult.variables?.[`w${index + 1}l`] +
+                            (2 * (weightResult.variables?.[`w${index + 1}m`] as number)) +
+                            weightResult.variables?.[`w${index + 1}u`]) * (1 / 4),
                 });
             });
 
@@ -46,11 +45,9 @@ const useWeightsResults = (
 
     setOfData.criteria.forEach((criterion, index) => {
         const weight =
-            ((criteriaResult.variables?.[`w${index + 1}l`] +
-                2 * criteriaResult.variables?.[`w${index + 1}m`] +
-                criteriaResult.variables?.[`w${index + 1}u`]) *
-                1) /
-            4;
+            (criteriaResult.variables?.[`w${index + 1}l`] +
+                (2 * criteriaResult.variables?.[`w${index + 1}m`]) +
+                criteriaResult.variables?.[`w${index + 1}u`]) * (1 / 4);
         const subCriteria: {
             id: string;
             initialWeight: number;
