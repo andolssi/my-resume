@@ -83,7 +83,7 @@ const LandingPage = () => {
        hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium"
               target="_blank"
               rel="noopener noreferrer"
-              href="/Houssem Eddine El Andolsi CV.pdf"
+              href="/Linkedin (houssem-eddine-el-andolsi).pdf"
               download
             >
               Download CV
