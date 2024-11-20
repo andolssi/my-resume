@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@gsap/react": "^2.1.1",
     "@hookform/resolvers": "^3.3.4",
     "@types/react-google-recaptcha": "^2.1.8",
     "@vercel/analytics": "^1.1.1",
@@ -20,6 +21,7 @@
     "concurrently": "^9.0.1",
     "embla-carousel-autoplay": "^8.0.0-rc18",
     "embla-carousel-react": "^8.0.0-rc18",
+    "gsap": "^3.12.5",
     "next": "14.0.4",
     "prettier-plugin-tailwind": "^2.2.12",
     "react": "^18",

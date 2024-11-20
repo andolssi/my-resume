@@ -17,6 +17,7 @@ const Experience = () => {
               width={50}
               height={50}
               sizes="500px"
+              loading="lazy"
             />
           </div>
           <h2 className="text-2xl font-semibold">July 2021 - December 2023</h2>
