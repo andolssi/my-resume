@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Quicksand, Source_Code_Pro } from 'next/font/google';
 import './globals.css';
-import SocialMediaContact from '@/components/SocialMediaContact';
+// import SocialMediaContact from '@/components/SocialMediaContact';
 import { Analytics } from '@vercel/analytics/react';
 import ThemePreferenceProvider from '@/components/ThemePreferenceProvider';
 
@@ -29,9 +29,9 @@ export default function RootLayout({
     <html lang="en">
       <ThemePreferenceProvider>
         <body
-          className={`${quicksand.variable} ${source_Code_Pro.variable} font-sans dark:bg-slate-800`}
+          className={`${quicksand.variable} ${source_Code_Pro.variable} font-sans dark:bg-slate-800 no-scroll`}
         >
-          <SocialMediaContact />
+          {/* <SocialMediaContact /> */}
           {children}
           <Analytics />
         </body>

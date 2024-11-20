@@ -1,20 +1,43 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from '../Carousel';
 import { logoLinks } from '../Carousel/imageByIndex';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 const AboutMeCard = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    let tl = gsap.timeline();
+    gsap.set('.about-me-img', { opacity: 0, scale: 0.2 });
+    tl.to('.about-me-img', {
+      opacity: 1,
+      scale: 1,
+      ease: 'back',
+      scrollTrigger: {
+        trigger: '#section-aboutMe',
+        start: 'top 80%',
+        end: '+=400',
+        scrub: 1,
+        toggleActions: 'play none reverse none',
+      },
+    });
+  });
+
   return (
     <>
       <div className="flex flex-col lg:flex-row justify-center items-center max-w-5xl mx-auto w-full">
-        <div className="relative p-3 m-3 md:px-5 px-10 w-full flex justify-center">
+        <div className="relative p-3 m-3 md:px-5 px-10 w-full flex justify-center about-me-img">
           <Image
-            className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto"
+            className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto rounded-lg"
             src="/mern-dev-img-color-adjusted.webp"
             alt="Houssem Eddine El Andolsi"
             width={444}
             height={434}
             sizes="500px"
+            loading="lazy"
           />
         </div>
         <div className="flex flex-col justify-center items-center lg:items-start w-full text-center lg:text-start lg:w-full ml-5 p-3">
@@ -26,12 +49,15 @@ const AboutMeCard = () => {
             Experience) with 3+ years of experience building and maintaining
             scalable web applications using the MERN stack and React Native.
             <br />
+            <br />
             My journey began in 2014, crafting worlds and characters as a 3d
             artist. This honed my problem-solving, attention to detail, and
             fast-paced work ethic. But the spark for code ignited with C#,
             leading me to JavaScript, TypeScript, and React. <br />
+            <br />
             Learning proved swift thanks to my analytical skills, landing me a
             Full stack developer role at Edonec. <br />
+            <br />
             Through hands-on projects, valuable feedback from my colleagues, and
             constant practice, I improved my MERN-stack skills, and it gave me
             the confidence to tackle any challenge.

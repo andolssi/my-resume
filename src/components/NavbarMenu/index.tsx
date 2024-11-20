@@ -1,16 +1,22 @@
 'use client';
 
 import React, {
+  DetailedHTMLProps,
   Dispatch,
+  HTMLAttributes,
   MutableRefObject,
   RefObject,
   SetStateAction,
   useEffect,
+  useLayoutEffect,
+  useRef,
   useState,
 } from 'react';
 import MobileNavbar from './MobileNavbar';
 import MenuSVG from '../SVG/MenuSVG';
 import ThemeToggle from '../ThemeToggle';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const NavbarMenu = ({
   myRef,
@@ -85,8 +91,26 @@ const NavbarMenu = ({
     });
   };
 
+  useGSAP(() => {
+    let tl = gsap.timeline();
+    tl.from('.nav-bar', {
+      duration: 1.5,
+      yPercent: -100,
+      ease: 'power1.out',
+    }).from(
+      '.nav-bar button',
+      {
+        stagger: 0.25,
+        opacity: 0,
+        x: 20,
+        ease: 'expo.out',
+      },
+      '-=0.7',
+    );
+  });
+
   return (
-    <div className="z-30 w-full fixed backdrop-blur-md bg-white/30 sm:h-auto h-[3.2rem] dark:bg-white/15 flex flex-row justify-center">
+    <div className="z-30 w-full fixed backdrop-blur-md bg-white/30 sm:h-auto h-[3.2rem] dark:bg-white/15 flex flex-row justify-center nav-bar">
       <button
         type="button"
         className="fill-[--secondary-color] hover:fill-[--primary-color]  dark:fill-slate-200 dark:hover:fill-white p-[0.55rem] m-[0.8rem] ml-8 rounded-lg absolute top-0 left-0 sm:hidden cursor-pointer transition duration-500 ease-in-out hover:scale-110 z-40"
