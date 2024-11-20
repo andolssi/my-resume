@@ -143,3 +143,9 @@ input[type='radio']:checked::before {
   height: 100%; /* Prevent scrolling on mobile */
   touch-action: none; /* Prevent touch scrolling */
 }
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  display: none;
+}

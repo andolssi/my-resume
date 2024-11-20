@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import ParticlesComponent from '../ParticlesComponent';
 import { useTheme } from '@/components/ThemePreferenceProvider';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 
 const LandingPage = () => {
   const [fadeOutClassName, setFadeOutClassName] = useState('');
@@ -14,41 +12,6 @@ const LandingPage = () => {
     document.getElementById('tsparticles')?.classList.add('h-full', 'w-full');
     setFadeOutClassName('opacity-100');
   }, []);
-
-  useGSAP(() => {
-    let tl = gsap.timeline();
-    tl.from(
-      '.img-profile',
-      {
-        opacity: 0,
-        scale: 0.2,
-        ease: 'sine.out',
-        duration: 2,
-      },
-      '<',
-    )
-      .from(
-        '.description-landing-page',
-        {
-          delay: 1,
-          xPercent: -200,
-          opacity: 0,
-          ease: 'sine.out',
-          duration: 1,
-          stagger: 0.2,
-        },
-        '<',
-      )
-      .from(
-        '#tsparticles',
-        {
-          opacity: 0,
-          ease: 'sine.out',
-          duration: 3,
-        },
-        '<',
-      );
-  });
 
   return (
     <>
