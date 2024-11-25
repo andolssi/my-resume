@@ -24,7 +24,7 @@ const LandingPage = () => {
       </div>
       <div className="z-10 lg:max-w-7xl max-w-5xl mx-auto w-full text-sm md:px-12 lg:px-28 flex flex-col lg:flex-row-reverse justify-center items-center relative ">
         <div className="w-full lg:w-1/2 flex justify-center">
-          <div className="relative flex self-center sm:mt-6 md:mt-6 lg:m-0">
+          <div className="relative flex self-center sm:mt-6 md:mt-6 lg:m-0 img-profile">
             <Image
               className={`${
                 theme === 'dark' ? 'hidden' : ''
@@ -33,7 +33,7 @@ const LandingPage = () => {
               alt="Houssem Eddine El Andolsi"
               width={454.8}
               height={396.2}
-              priority
+              loading="lazy"
             />
             <Image
               className={`${
@@ -54,20 +54,20 @@ const LandingPage = () => {
     lg:items-start p-3 pt-0 mt-0 opacity-0 transition-opacity 
     duration-1000 ease-in-out delay-100 ${fadeOutClassName}`}
         >
-          <h2 className="m-2 text-xl text-center lg:text-start font-sans font-light text-slate-700 dark:text-stone-200">
-            Full stack developer
+          <h2 className="m-2 text-xl text-center lg:text-start font-sans font-light text-slate-700 dark:text-stone-200 description-landing-page">
+            Full Stack js developer
           </h2>
-          <h1 className="m-10 lg:m-2 my-0 text-3xl md:text-4xl lg:text-5xl text-center lg:text-start font-sans font-semibold text-slate-700 dark:text-stone-200">
+          <h1 className="m-10 lg:m-2 my-0 text-3xl md:text-4xl lg:text-5xl text-center lg:text-start font-sans font-semibold text-slate-700 dark:text-stone-200 description-landing-page">
             Hello, I'm{' '}
-            <span className="text-[--primary-color] uppercase">
+            <span className="text-[--primary-color] uppercase description-landing-page">
               Houssem Eddine El Andolssi
             </span>
           </h1>
-          <h2 className="m-2 mt-1 text-sm md:text-sm text-center lg:text-start font-sans w-4/5 text-slate-700 dark:text-stone-200">
+          <h2 className="m-2 mt-1 lg:text-base md:text-sm text-center lg:text-start font-sans w-4/5 text-slate-700 dark:text-stone-200 description-landing-page">
             Combining my creative soul with a developer's logic, I build
             seamless web experiences that are both beautiful and powerful.
           </h2>
-          <div>
+          <div className="description-landing-page">
             <button
               type="button"
               className="my-5 w-fit mx-1 md:mx-2 text-xs md:text-base bg-[--primary-color]

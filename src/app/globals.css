@@ -137,3 +137,15 @@ input[type='radio']:checked::before {
   border-radius: 50%;
   background-color: white; /* Color of the inner circle */
 }
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%; /* Prevent scrolling on mobile */
+  touch-action: none; /* Prevent touch scrolling */
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  display: none;
+}

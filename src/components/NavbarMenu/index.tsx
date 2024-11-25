@@ -86,7 +86,7 @@ const NavbarMenu = ({
   };
 
   return (
-    <div className="z-30 w-full fixed backdrop-blur-md bg-white/30 sm:h-auto h-[3.2rem] dark:bg-white/15 flex flex-row justify-center">
+    <div className="z-30 w-full fixed backdrop-blur-md bg-white/30 sm:h-auto h-[3.2rem] dark:bg-white/15 flex flex-row justify-center nav-bar">
       <button
         type="button"
         className="fill-[--secondary-color] hover:fill-[--primary-color]  dark:fill-slate-200 dark:hover:fill-white p-[0.55rem] m-[0.8rem] ml-8 rounded-lg absolute top-0 left-0 sm:hidden cursor-pointer transition duration-500 ease-in-out hover:scale-110 z-40"
