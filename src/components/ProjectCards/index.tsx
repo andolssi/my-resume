@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
 import Card from '../Card';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 const CARD_DATA = [
   {
     headLine: 'Mpsy.tn',
@@ -8,7 +12,7 @@ const CARD_DATA = [
     description:
       'mpsy.tn is the first platform in Tunisia entirely dedicated to mental health.',
     callToActionTitle: 'Visit',
-    imageSrc: 'MPSY-Screenshot.png',
+    imageSrc: 'MPSY-Screenshot.webp',
     link: 'https://mpsy.tn/',
     relatedTechnologies: [
       'MongoDB',
@@ -70,6 +74,20 @@ const CARD_DATA = [
   },
 ];
 const ProjectCards = () => {
+  useGSAP(() => {
+    gsap.from('.card', {
+      opacity: 0,
+      stagger: 0.25,
+      scrollTrigger: {
+        trigger: '.card',
+        start: 'top bottom',
+        end: 'bottom+=200 top',
+        scrub: 3,
+        toggleActions: 'play pause reverse pause',
+      },
+      ease: 'power2.out',
+    });
+  });
   return (
     <>
       <h1 className="my-10 text-xl lg:text-start font-sans font-medium text-stone-600 dark:text-stone-200">

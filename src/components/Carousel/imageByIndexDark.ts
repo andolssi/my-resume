@@ -18,6 +18,9 @@ export const darkLogoLinks: string[] = [
     "/logos/tailwind-css-logo.png",
     "/logos/redux-logo.png",
     "/logos/zod-logo-light-theme.png",
+    "/logos/lottie.webp",
+    "/logos/gsap-min.webp",
+    "/logos/Vitejs.webp",
 
 ]
 

@@ -30,7 +30,7 @@ const Card = ({
     <div
       className={`p-1 min-[400px]:p-4 rounded-md my-4 flex justify-between ${
         index % 2 === 0 ? 'sm:flex-row-reverse' : 'sm:flex-row'
-      } flex-col`}
+      } flex-col card`}
     >
       <div
         className="relative w-full p-3 sm:p-0 hover:scale-105 hover:cursor-pointer dark:text-stone-200 transition-all ease-in-out"

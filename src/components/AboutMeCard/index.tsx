@@ -4,12 +4,18 @@ import Carousel from '../Carousel';
 import { logoLinks } from '../Carousel/imageByIndex';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
 
 const AboutMeCard = () => {
-  gsap.registerPlugin(ScrollTrigger);
-
   useGSAP(() => {
+    gsap.to('.embla__slide__img', {
+      duration: 2,
+      y: 2,
+      scale: 0.9,
+      yoyo: true,
+      repeat: -1,
+      ease: 'power1.inOut',
+    });
+
     let tl = gsap.timeline();
     gsap.set('.about-me-img', { opacity: 0, scale: 0.2 });
     tl.to('.about-me-img', {
@@ -21,7 +27,7 @@ const AboutMeCard = () => {
         start: 'top 80%',
         end: '+=400',
         scrub: 1,
-        toggleActions: 'play none reverse none',
+        toggleActions: 'play pause reverse pause',
       },
     });
   });
