@@ -8,7 +8,7 @@ const Experience = () => {
         Experience
       </h1>
       <div className="relative flex flex-col sm:flex-row mx-auto max-w-5xl w-[85%] sm:w-full lg:p-8 gap-3">
-        <div className="grid grid-cols-1 justify-items-center w-full gap-2 dark:text-stone-200 border-[1px] p-3 rounded-lg shadow-sm">
+        <div className="grid grid-cols-1 justify-items-center w-full gap-2 dark:text-stone-200 border-[1px] p-3 rounded-lg shadow-sm text-center sm:text-start">
           <div className="relative w-full flex justify-center max-h-fit">
             <Image
               className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto w-2/12 rounded-md mx-3"
@@ -53,7 +53,7 @@ const Experience = () => {
             assets in dynamic startup environments.
           </div>
         </div>
-        <div className="grid grid-cols-1 justify-items-center w-full gap-4 dark:text-stone-200 border-[1px] p-3 rounded-lg shadow-sm">
+        <div className="grid grid-cols-1 justify-items-center w-full gap-4 dark:text-stone-200 border-[1px] p-3 rounded-lg shadow-sm text-center sm:text-start">
           <div className="relative w-full flex justify-center max-h-fit">
             <Image
               className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto w-2/12 rounded-md aspect-auto"
