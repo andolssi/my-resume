@@ -39,7 +39,7 @@ const ParticlesComponent = () => {
               quantity: 5,
             },
             repulse: {
-              distance: 200,
+              distance: 100,
               duration: 0.4,
             },
           },
@@ -73,7 +73,7 @@ const ParticlesComponent = () => {
             value: 60,
           },
           opacity: {
-            value: 0.4,
+            value: 0.6,
           },
           shape: {
             type: 'circle',

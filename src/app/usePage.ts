@@ -1,21 +1,26 @@
 import { useState, useRef, MutableRefObject, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 function usePage() {
     const [mobileNavbarIsOpen, setMobileNavbarIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const myRef = useRef<MutableRefObject<HTMLDivElement>>(null);
+    const loadingRef = useRef<HTMLDivElement | null>(null);
     const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-    gsap.registerPlugin(useGSAP);
+    gsap.registerPlugin(useGSAP, ScrollTrigger);
+
 
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll to top on mount
     }, []);
 
     useEffect(() => {
-        if (!isLoading) {
+        if (!isLoading && loadingRef.current) {
             document.body.classList.remove('no-scroll');
+            (loadingRef.current as HTMLDivElement).style.display = 'none'; // Hide the loader
         }
     }, [isLoading]);
 
@@ -114,6 +119,7 @@ function usePage() {
         mobileNavbarIsOpen,
         setMobileNavbarIsOpen,
         siteKey,
+        loadingRef
     })
 }
 

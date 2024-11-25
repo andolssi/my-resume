@@ -13,15 +13,22 @@ import Loader from '@/components/Loader';
 import usePage from './usePage';
 
 export default function Home() {
-  const { myRef, mobileNavbarIsOpen, setMobileNavbarIsOpen, siteKey } =
-    usePage();
+  const {
+    myRef,
+    mobileNavbarIsOpen,
+    setMobileNavbarIsOpen,
+    siteKey,
+    loadingRef,
+  } = usePage();
 
   return (
     <main
       className="flex min-h-screen flex-col"
       ref={myRef as unknown as LegacyRef<HTMLBodyElement> | undefined}
     >
-      <Loader />
+      <div ref={loadingRef}>
+        <Loader />
+      </div>
       <NavbarMenu
         myRef={myRef}
         isMobile={mobileNavbarIsOpen}
