@@ -112,7 +112,7 @@ const NavbarMenu = ({
               currentIndex === 0
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200 '
-            } font-medium text-xs sm:text-sm`}
+            } font-medium text-xs sm:text-sm individual-btn-menu`}
             onClick={() => scrollToIndex(0)}
           >
             Home
@@ -128,7 +128,7 @@ const NavbarMenu = ({
               currentIndex === 1
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
-            } font-medium text-xs sm:text-sm`}
+            } font-medium text-xs sm:text-sm individual-btn-menu`}
             onClick={() => scrollToIndex(1)}
           >
             About Me
@@ -144,7 +144,7 @@ const NavbarMenu = ({
               currentIndex === 2
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
-            } font-medium text-xs sm:text-sm`}
+            } font-medium text-xs sm:text-sm individual-btn-menu`}
             onClick={() => scrollToIndex(2)}
           >
             Experience
@@ -160,7 +160,7 @@ const NavbarMenu = ({
               currentIndex === 3
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
-            } font-medium text-xs sm:text-sm`}
+            } font-medium text-xs sm:text-sm individual-btn-menu`}
             onClick={() => scrollToIndex(3)}
           >
             Portfolio
@@ -176,7 +176,7 @@ const NavbarMenu = ({
               currentIndex === 4
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
-            } font-medium text-xs sm:text-sm`}
+            } font-medium text-xs sm:text-sm individual-btn-menu`}
             onClick={() => scrollToIndex(4)}
           >
             Contact

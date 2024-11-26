@@ -103,14 +103,14 @@ function usePage() {
                 },
                 '<',
             ).from(
-                '.nav-bar button',
+                '.nav-bar .individual-btn-menu',
                 {
                     stagger: 0.25,
                     opacity: 0,
                     x: 20,
                     ease: 'expo.out',
                 },
-                '<'
+                '-=1.5'
             );
     });
 

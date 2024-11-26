@@ -5,10 +5,10 @@ const Loader = () => {
   return (
     <>
       <div className="absolute left-0 top-0 w-full flex flex-row items-center justify-center h-screen loader-bg z-40">
-        <div className="w-full h-full bg-slate-100" />
-        <div className="w-full h-full bg-slate-100" />
-        <div className="w-full h-full bg-slate-100" />
-        <div className="w-full h-full bg-slate-100" />
+        <div className="w-full h-full bg-slate-100 dark:bg-slate-800" />
+        <div className="w-full h-full bg-slate-100 dark:bg-slate-800" />
+        <div className="w-full h-full bg-slate-100 dark:bg-slate-800" />
+        <div className="w-full h-full bg-slate-100 dark:bg-slate-800" />
       </div>
       <div className="absolute left-0 top-0 w-full flex flex-row items-center justify-center h-screen loader z-40 text-[--primary-color] text-4xl font-light space-x-4">
         <h3 className="char">L</h3>
