@@ -6,6 +6,8 @@ import EmailAlert from '../Alerts/EmailAlert';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useContactForm } from './useContactForm';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const ContactForm = ({ siteKey }: { siteKey?: string }) => {
   const contactRef = useRef<MutableRefObject<HTMLDivElement>>(null);
@@ -23,6 +25,38 @@ const ContactForm = ({ siteKey }: { siteKey?: string }) => {
     reCaptchaRef,
   } = useContactForm();
 
+  useGSAP(() => {
+    let tl = gsap.timeline();
+    gsap.set('.form-animation', { opacity: 0 });
+    tl.to('.form-animation', {
+      opacity: 1,
+      ease: 'expo.out',
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: '#section-portfolio',
+        start: '80% 80%',
+        end: '+=700',
+        scrub: 1,
+        toggleActions: 'play pause reverse pause',
+      },
+    });
+    tl.fromTo(
+      '.test',
+      { opacity: 0 },
+      {
+        opacity: 1,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: '#section-contact',
+          start: 'top 60%',
+          end: '+=200',
+          scrub: 1,
+          toggleActions: 'play pause reverse pause',
+        },
+      },
+    );
+  });
+
   if (!siteKey) {
     console.error('RECAPTCHA site key is not defined');
     return;
@@ -34,10 +68,10 @@ const ContactForm = ({ siteKey }: { siteKey?: string }) => {
       ref={contactRef.current}
     >
       <div className="grid grid-col-1 md:grid-cols-2 gap-4">
-        <div className="flex flex-col justify-center md:ml-32 font-semibold text-base dark:text-stone-200">
+        <div className="flex flex-col justify-center md:ml-16 font-semibold text-base dark:text-stone-200">
           <a
             href="tel:+21652841633"
-            className="flex flex-row  justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out contact-headline"
+            className="flex flex-row  justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out contact-headline test"
           >
             <div className="rounded-full bg-[--primary-color] p-3">
               <PhoneSVG className="fill-white text-lg" />
@@ -49,7 +83,7 @@ const ContactForm = ({ siteKey }: { siteKey?: string }) => {
           </a>
           <a
             href="mailto:andolsihoussemeddine@gmail.com"
-            className="flex flex-row justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out contact-headline"
+            className="flex flex-row justify-start items-center hover:cursor-pointer rounded-md hover:scale-105 transition-all ease-in-out contact-headline test"
           >
             <div className="rounded-full bg-[--primary-color] p-3">
               <EmailSVG className="fill-white text-lg" />
@@ -59,7 +93,7 @@ const ContactForm = ({ siteKey }: { siteKey?: string }) => {
               <h3 className="font-normal">andolsihoussemeddine@gmail.com </h3>
             </div>
           </a>
-          <div className="flex flex-row  justify-start items-center">
+          <div className="flex flex-row  justify-start items-center test">
             <div className="rounded-full bg-[--primary-color] p-3">
               <PositionSVG className="fill-white text-3" />
             </div>
@@ -70,16 +104,19 @@ const ContactForm = ({ siteKey }: { siteKey?: string }) => {
           </div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} ref={form}>
-          <div className="border-b border-gray-900/10 pb-12 w-full px-3 sm:px-0">
-            <h2 className="text-xl font-medium leading-7 text-gray-900 dark:text-gray-200">
-              Get In <span className="text-[--primary-color]">Touch</span>
+          <div className="border-b border-gray-900/10 pb-12 w-full px-3 sm:pr-11 lg:px-6">
+            <h2 className="text-xl font-medium leading-7 text-gray-900 dark:text-gray-200 form-animation">
+              Get In{' '}
+              <span className="text-[--primary-color] form-animation">
+                Touch
+              </span>
             </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-200">
+            <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-200 form-animation">
               Use a permanent address where you can receive mail.
             </p>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-3">
+              <div className="sm:col-span-3 form-animation">
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
@@ -101,7 +138,7 @@ const ContactForm = ({ siteKey }: { siteKey?: string }) => {
                 </div>
               </div>
 
-              <div className="sm:col-span-3">
+              <div className="sm:col-span-3 form-animation">
                 <label
                   htmlFor="phone"
                   className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
@@ -123,7 +160,7 @@ const ContactForm = ({ siteKey }: { siteKey?: string }) => {
                 </div>
               </div>
 
-              <div className="col-span-full">
+              <div className="col-span-full form-animation">
                 <label
                   htmlFor="message"
                   className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
@@ -150,32 +187,36 @@ const ContactForm = ({ siteKey }: { siteKey?: string }) => {
                   sitekey={siteKey}
                   onError={recaptchaError}
                 />
-                <button
-                  type="submit"
-                  className={`text-xs md:text-base bg-[--primary-color] hover:cursor-pointer
-             text-white rounded-md hover:border-black filter drop-shadow-lg 
-             hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium w-full p-3 ${
-               isSubmitting ? 'loading hover:cursor-not-allowed text-lg!' : ''
-             }`}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center gap-2 w-100">
-                      Loading
-                      <div className="h-6 w-4 border-b-2 border-current rounded-full animate-spin" />
-                    </span>
-                  ) : (
-                    'Submit'
-                  )}
-                </button>
-                <Image
-                  className="hidden sm:block absolute top-0 right-full opacity-55 dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full w-auto h-full"
-                  src="/flesh-website-decoration.png"
-                  alt="Houssem Eddine El Andolsi"
-                  width={50}
-                  height={50}
-                  priority
-                />
+                <div className="form-animation">
+                  <button
+                    type="submit"
+                    className={`text-xs md:text-base bg-[--primary-color] hover:cursor-pointer
+                    text-white rounded-md hover:border-black filter drop-shadow-lg 
+                    hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium w-full p-3 ${
+                      isSubmitting
+                        ? 'loading hover:cursor-not-allowed text-lg!'
+                        : ''
+                    }`}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center gap-2 w-100">
+                        Loading
+                        <div className="h-6 w-4 border-b-2 border-current rounded-full animate-spin" />
+                      </span>
+                    ) : (
+                      'Submit'
+                    )}
+                  </button>
+                  <Image
+                    className="hidden sm:block absolute top-0 right-full opacity-55 dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full w-auto h-full"
+                    src="/flesh-website-decoration.png"
+                    alt="Houssem Eddine El Andolsi"
+                    width={50}
+                    height={50}
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>

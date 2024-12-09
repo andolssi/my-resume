@@ -33,7 +33,8 @@ const LandingPage = () => {
               alt="Houssem Eddine El Andolsi"
               width={454.8}
               height={396.2}
-              loading="lazy"
+              priority
+              sizes="(min-width: 500px) 456px, calc(86.11vw + 42px)"
             />
             <Image
               className={`${
@@ -43,9 +44,11 @@ const LandingPage = () => {
               alt="Houssem Eddine El Andolsi"
               width={454.8}
               height={396.2}
-              loading="lazy"
               placeholder="blur"
               blurDataURL="/Houssem-Eddine-Andolssi-light.webp"
+              priority
+              sizes="(min-width: 500px) 456px, calc(86.11vw + 42px)"
+              fetchPriority="high"
             />
           </div>
         </div>

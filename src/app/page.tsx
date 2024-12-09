@@ -1,16 +1,25 @@
 'use client';
 
 import { LegacyRef } from 'react';
-import AboutMeCard from '@/components/AboutMeCard';
-import ContactForm from '@/components/ContactForm';
-import Experience from '@/components/Experience';
-import Footer from '@/components/Footer';
-import LandingPage from '@/components/LandingPage';
+import dynamic from 'next/dynamic';
 import NavbarMenu from '@/components/NavbarMenu';
-import ProjectCards from '@/components/ProjectCards';
+import LandingPage from '@/components/LandingPage';
 import SocialMediaContact from '@/components/SocialMediaContact';
 import Loader from '@/components/Loader';
+import Footer from '@/components/Footer';
 import usePage from './usePage';
+const ProjectCards = dynamic(() => import('@/components/ProjectCards'), {
+  ssr: false,
+});
+const Experience = dynamic(() => import('@/components/Experience'), {
+  ssr: false,
+});
+const ContactForm = dynamic(() => import('@/components/ContactForm'), {
+  ssr: false,
+});
+const AboutMeCard = dynamic(() => import('@/components/AboutMeCard'), {
+  ssr: false,
+});
 
 export default function Home() {
   const {

@@ -58,7 +58,7 @@ const Card = ({
               {headLine}
             </Link>
           </h1>
-          <h3 className="text-sm sm:text-base font-semibold">{subHeadLine}</h3>
+          <h2 className="text-sm sm:text-base font-semibold">{subHeadLine}</h2>
         </div>
         <div>
           <p className="text-sm line-clamp-3">{description}</p>
