@@ -1,9 +1,11 @@
 'use client';
 
+import canUseDOM from '@/utilities/canUseDOM';
 import {
   Dispatch,
   SetStateAction,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -15,7 +17,7 @@ const ThemeContext = createContext<{
   setTheme: Dispatch<SetStateAction<string>>;
   setAutoTheme: Dispatch<SetStateAction<boolean>>;
 }>({
-  theme: 'light',
+  theme: 'dark',
   setTheme: () => {},
   setAutoTheme: () => {},
 });
@@ -25,37 +27,49 @@ const ThemePreferenceProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [theme, setTheme] = useState<string>('light');
+  // Improved initial theme detection
+  const getInitialTheme = useCallback((): string => {
+    if (!canUseDOM) return 'dark';
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'dark';
+  }, []);
+
+  // State hooks with improved initialization
+  const [theme, setTheme] = useState<string>(getInitialTheme());
   const [autoTheme, setAutoTheme] = useState(true);
 
-  useEffect(() => {
-    const setThemePreference = () => {
-      if (autoTheme && window) {
-        const isDarkMode =
-          window.matchMedia &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setTheme(isDarkMode ? 'dark' : 'light');
-      }
-    };
+  // useEffect(() => {
+  //   // Early return if not in browser or auto theme is disabled
+  //   if (!canUseDOM || !autoTheme) return;
 
-    setThemePreference();
+  //   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  //   console.log({ mediaQuery });
 
-    // Listen for changes in the user's color scheme preference
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', setThemePreference);
+  //   const handleThemeChange = () => {
+  //     const isDarkMode = mediaQuery.matches;
+  //     console.log({ isDarkMode });
+  //     console.log({ isDarkMode: mediaQuery.matches });
+  //     setTheme(isDarkMode ? 'dark' : 'dark');
+  //   };
 
-    return () => {
-      // Remove the event listener when the component is unmounted
-      window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .removeEventListener('change', setThemePreference);
-    };
-  }, [autoTheme]);
+  //   // Initial check
+  //   handleThemeChange();
 
+  //   // Add event listener
+  //   mediaQuery.addEventListener('change', handleThemeChange);
+
+  //   // Cleanup listener
+  //   return () => {
+  //     mediaQuery.removeEventListener('change', handleThemeChange);
+  //   };
+  // }, [autoTheme]);
+
+  // Memoized context value with dependencies
   const themeContextValue = useMemo(
     () => ({ theme, setTheme, setAutoTheme }),
-    [theme],
+    [theme, setTheme, setAutoTheme],
   );
 
   return (
@@ -69,8 +83,8 @@ export default ThemePreferenceProvider;
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+  if (context === undefined) {
+    throw new Error('useTheme must be used within a ThemePreferenceProvider');
   }
   return context;
 };

@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <ThemePreferenceProvider>
         <body
           className={`${quicksand.variable} ${source_Code_Pro.variable} font-sans dark:bg-slate-800 no-scroll`}

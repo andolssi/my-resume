@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import WeightsResults from '@/components/WeightsResults';
 import determineModelType from '@/helpers/determineModelType';
 import { useIsMounted } from '@/helpers/useIsMounted';
+import canUseDOM from '@/utilities/canUseDOM';
 
 export default function SecondStepPage() {
   const isMounted = useIsMounted();
@@ -139,9 +140,7 @@ export default function SecondStepPage() {
           </h2>
           <button
             onClick={() =>
-              window !== undefined
-                ? (window.location.href = '/test')
-                : console.log
+              canUseDOM ? (window.location.href = '/test') : console.log
             } // Redirect to home page
             className="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out"
           >

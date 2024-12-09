@@ -41,7 +41,7 @@ const AboutMeCard = () => {
             src="/mern-dev-img-color-adjusted.webp"
             alt="Houssem Eddine El Andolsi"
             width={444}
-            height={434}
+            height={444}
             sizes="500px"
             loading="lazy"
           />
@@ -75,7 +75,7 @@ const AboutMeCard = () => {
           </p>
           <button
             type="button"
-            className="my-3 w-fit mx-1 md:mx-2 text-sm md:text-base  bg-[--primary-color]
+            className="my-3 w-fit mx-1 md:mx-2 text-sm md:text-base bg-[--primary-color]
        text-white rounded-md p-2 px-6 hover:border-black filter drop-shadow-lg 
        hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium dark:text-stone-200"
           >
