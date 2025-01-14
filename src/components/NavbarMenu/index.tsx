@@ -32,11 +32,6 @@ const NavbarMenu = ({
     for (let i = 0; i < sections.length; i++) {
       const section = sections[i];
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      console.log({
-        sectionTop,
-        scrollY: scrollY + 300,
-        offsetHeight: section.getBoundingClientRect().height,
-      });
 
       // Adjust thresholds for visibility based on your needs:
       if (
