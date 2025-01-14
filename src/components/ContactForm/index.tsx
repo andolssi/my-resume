@@ -192,7 +192,7 @@ const ContactForm = ({ siteKey }: { siteKey?: string }) => {
                     type="submit"
                     className={`text-xs md:text-base bg-[--primary-color] hover:cursor-pointer
                     text-white rounded-md hover:border-black filter drop-shadow-lg 
-                    hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium w-full p-3 ${
+                    hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium w-full p-3 dark:hover:bg-orange-50 dark:hover:text-[--primary-color] ${
                       isSubmitting
                         ? 'loading hover:cursor-not-allowed text-lg!'
                         : ''

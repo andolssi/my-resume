@@ -28,11 +28,11 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button onClick={handleToggle}>
+    <button onClick={handleToggle} id="btn-toggle">
       {isDarkMode ? (
-        <LightModeSVG className="w-6 h-6" />
+        <LightModeSVG className="w-6 h-6 light-hover-theme-button" />
       ) : (
-        <DarkModeSVG className="w-6 h-6" />
+        <DarkModeSVG className="w-6 h-6 dark-hover-theme-button" />
       )}
     </button>
   );

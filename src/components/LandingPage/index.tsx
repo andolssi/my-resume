@@ -13,6 +13,22 @@ const LandingPage = () => {
     setFadeOutClassName('opacity-100');
   }, []);
 
+  const handleScroll = () => {
+    const myWork = document.getElementById('section-portfolio');
+    (myWork as Element).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'start',
+    });
+  };
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
+
   return (
     <>
       <div
@@ -75,22 +91,20 @@ const LandingPage = () => {
               type="button"
               className="my-5 w-fit mx-1 md:mx-2 text-xs md:text-base bg-[--primary-color]
        text-white rounded-md p-3 hover:border-black filter drop-shadow-lg 
-       hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium"
+       hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium dark:hover:bg-orange-50 dark:hover:text-[--primary-color]"
             >
               <a href="mailto:andolsihoussemeddine@gmail.com">Contact Me</a>
             </button>
 
-            <Link
-              className="my-4 w-fit mx-1 md:mx-2 border-[1px] text-xs md:text-base border-slate-700 dark:border-slate-200
-       text-slate-600 dark:text-slate-200 rounded-md p-3 hover:border-black hover:text-black dark:hover:border-white dark:hover:text-white filter drop-shadow-lg 
+            <button
+              type="button"
+              className="my-4 w-fit mx-1 md:mx-2 py-3 px-4 border-[1px] text-xs md:text-base border-slate-700 dark:border-slate-200
+       text-slate-600 dark:text-slate-200 rounded-md hover:border-black hover:text-black dark:hover:border-orange-400 dark:hover:text-orange-400 filter drop-shadow-lg 
        hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="/Linkedin (houssem-eddine-el-andolsi).pdf"
-              download
+              onClick={handleScroll}
             >
-              Download CV
-            </Link>
+              My work
+            </button>
           </div>
         </div>
       </div>

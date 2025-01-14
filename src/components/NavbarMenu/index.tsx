@@ -31,44 +31,52 @@ const NavbarMenu = ({
     ) as HTMLDivElement[];
     for (let i = 0; i < sections.length; i++) {
       const section = sections[i];
-      const sectionTop = section.getBoundingClientRect().top;
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      console.log({
+        sectionTop,
+        scrollY: scrollY + 300,
+        offsetHeight: section.getBoundingClientRect().height,
+      });
+
       // Adjust thresholds for visibility based on your needs:
       if (
-        scrollY > sectionTop - 100 &&
-        scrollY < sectionTop + section.offsetHeight - 200
+        scrollY + 800 > sectionTop &&
+        scrollY + 800 < sectionTop + section.offsetHeight
       ) {
         return i;
       }
     }
-
-    // 3. Fallback to default index (if none of the above conditions match):
-    return 0;
+    return -1;
   };
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = async () => {
+      let timer: NodeJS.Timeout;
       if (myRef.current) {
         setScrollY(window.scrollY - 100);
-        const currentIndex = calculateIndex(
-          scrollY,
-          myRef.current as unknown as HTMLDivElement,
-        );
-        setCurrentIndex(currentIndex);
+        await setTimeout(() => {
+          const currentIndex = calculateIndex(
+            scrollY,
+            myRef.current as unknown as HTMLDivElement,
+          );
+
+          currentIndex !== -1 && setCurrentIndex(currentIndex);
+        }, 500);
       }
+      return () => {
+        clearTimeout(timer);
+      };
     };
 
     // just trigger this so that the initial state
     // is updated as soon as the component is mounted
     // related: https://stackoverflow.com/a/63408216
     handleScroll();
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [myRef, scrollY]);
 
   const scrollToIndex = (index: number) => {
     setCurrentIndex(index);
@@ -101,14 +109,14 @@ const NavbarMenu = ({
         setIsMobile={setIsMobile}
         currentIndex={currentIndex}
       />
-      <div className="sm:flex flex-row justify-center px-20 lg:px-40 my-2 items-center hidden">
+      <div className="sm:flex flex-row justify-center px-20 lg:px-40 items-center hidden">
         <div
-          className="mx-2 sm:mx-3 lg:mx-8 my-2 transition duration-500 ease-in-out 
+          className="transition duration-500 ease-in-out 
         hover:-translate-y-1 hover:scale-105"
         >
           <button
             type="button"
-            className={` ${
+            className={`px-2 sm:px-3 lg:px-8 py-2 ${
               currentIndex === 0
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200 '
@@ -119,12 +127,12 @@ const NavbarMenu = ({
           </button>
         </div>
         <div
-          className="mx-2 sm:mx-3 lg:mx-8 my-2 transition duration-500 ease-in-out 
+          className="my-2 transition duration-500 ease-in-out 
           hover:-translate-y-1 hover:scale-110"
         >
           <button
             type="button"
-            className={` ${
+            className={`px-2 sm:px-3 lg:px-8 py-2 ${
               currentIndex === 1
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
@@ -135,12 +143,12 @@ const NavbarMenu = ({
           </button>
         </div>
         <div
-          className="mx-2 sm:mx-3 lg:mx-8 my-2 transition duration-500 ease-in-out 
+          className="my-2 transition duration-500 ease-in-out 
         hover:-translate-y-1 hover:scale-110"
         >
           <button
             type="button"
-            className={` ${
+            className={`px-2 sm:px-3 lg:px-8 py-2 ${
               currentIndex === 2
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
@@ -151,12 +159,12 @@ const NavbarMenu = ({
           </button>
         </div>
         <div
-          className="mx-2 sm:mx-3 lg:mx-8 my-2 transition duration-500 ease-in-out 
+          className="my-2 transition duration-500 ease-in-out 
         hover:-translate-y-1 hover:scale-110"
         >
           <button
             type="button"
-            className={` ${
+            className={`px-2 sm:px-3 lg:px-8 py-2 ${
               currentIndex === 3
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
@@ -167,16 +175,16 @@ const NavbarMenu = ({
           </button>
         </div>
         <div
-          className="mx-2 sm:mx-3 lg:mx-8 my-2 transition duration-500 ease-in-out 
+          className="my-2 transition duration-500 ease-in-out 
         hover:-translate-y-1 hover:scale-110"
         >
           <button
             type="button"
-            className={` ${
+            className={`px-2 sm:px-3 lg:px-8 py-2 ${
               currentIndex === 4
                 ? 'text-[--primary-color] hover:text-[--primary-color]'
                 : 'text-[--secondary-color] hover:text-[--primary-color] dark:text-slate-200'
-            } font-medium text-xs sm:text-sm individual-btn-menu`}
+            } font-medium text-xs sm:text-sm individual-btn-menu dark:hover:text-[--primary-color]`}
             onClick={() => scrollToIndex(4)}
           >
             Contact
@@ -184,7 +192,7 @@ const NavbarMenu = ({
         </div>
       </div>
       <div className="flex justify-end items-center">
-        <div className="p-[0.55rem] m-[0.5rem] mr-8 rounded-lg absolute top-0 right-0 cursor-pointer transition duration-500 ease-in-out hover:scale-110 z-30">
+        <div className="p-[0.55rem] pb-0 m-[0.5rem] mr-8 rounded-lg absolute top-0 right-0 cursor-pointer transition duration-500 ease-in-out hover:scale-110 z-30">
           <ThemeToggle />
         </div>
       </div>

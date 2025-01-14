@@ -149,3 +149,13 @@ input[type='radio']:checked::before {
 ::-webkit-scrollbar-thumb {
   display: none;
 }
+
+#btn-toggle:hover {
+  .light-hover-theme-button {
+    fill: #f2b471;
+    stroke: #f2b471;
+  }
+  .dark-hover-theme-button {
+    fill: #091549;
+  }
+}
