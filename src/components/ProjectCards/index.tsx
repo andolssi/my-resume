@@ -12,7 +12,7 @@ const CARD_DATA = [
     description:
       'mpsy.tn is the first platform in Tunisia entirely dedicated to mental health.',
     callToActionTitle: 'Visit',
-    imageSrc: 'MPSY-Screenshot.webp',
+    imageSrc: 'MPSY-Screenshot.png',
     link: 'https://mpsy.tn/',
     relatedTechnologies: [
       'MongoDB',
