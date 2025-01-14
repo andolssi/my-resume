@@ -12,13 +12,6 @@ function usePage() {
     const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
     gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            window.scrollTo(0, 0); // Scroll to top on mount
-        }
-    }, []);
-
     useEffect(() => {
         if (!isLoading && loadingRef.current) {
             document.body.classList.remove('no-scroll');
