@@ -14,7 +14,9 @@ function usePage() {
 
 
     useEffect(() => {
-        window.scrollTo(0, 0); // Scroll to top on mount
+        if (typeof window !== 'undefined') {
+            window.scrollTo(0, 0); // Scroll to top on mount
+        }
     }, []);
 
     useEffect(() => {
