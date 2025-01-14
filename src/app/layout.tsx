@@ -4,6 +4,7 @@ import './globals.css';
 // import SocialMediaContact from '@/components/SocialMediaContact';
 import { Analytics } from '@vercel/analytics/react';
 import ThemePreferenceProvider from '@/components/ThemePreferenceProvider';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({
           className={`${quicksand.variable} ${source_Code_Pro.variable} font-sans dark:bg-slate-800 no-scroll`}
         >
           {/* <SocialMediaContact /> */}
+          <ScrollToTop />
           {children}
           <Analytics />
         </body>
