@@ -1,4 +1,4 @@
-import { useState, useRef, MutableRefObject, useEffect } from "react";
+import { useState, useRef, MutableRefObject, useEffect, useCallback } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,6 +11,14 @@ function usePage() {
     const loadingRef = useRef<HTMLDivElement | null>(null);
     const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
     gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+    const resetWindowScrollPosition = useCallback(() => window.scrollTo(0, 0), [])
+
+    useEffect(() => {
+        window.onbeforeunload = function () {
+            resetWindowScrollPosition()
+        }
+    }, [resetWindowScrollPosition])
 
     useEffect(() => {
         if (!isLoading && loadingRef.current) {
