@@ -21,6 +21,7 @@ export const darkLogoLinks: string[] = [
     "/logos/lottie.webp",
     "/logos/gsap-min.webp",
     "/logos/Vitejs.webp",
+    "/logos/Figma-logo.png",
 
 ]
 

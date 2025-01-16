@@ -22,13 +22,6 @@ const LandingPage = () => {
     });
   };
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
-
   return (
     <>
       <div
@@ -74,7 +67,7 @@ const LandingPage = () => {
     duration-1000 ease-in-out delay-100 ${fadeOutClassName}`}
         >
           <h2 className="m-2 text-xl text-center lg:text-start font-sans font-light text-slate-700 dark:text-stone-200 description-landing-page">
-            Full Stack js developer
+            Full Stack js developer & Web Designer
           </h2>
           <h1 className="m-10 lg:m-2 my-0 text-3xl md:text-4xl lg:text-5xl text-center lg:text-start font-sans font-semibold text-slate-700 dark:text-stone-200 description-landing-page">
             Hello, I'm{' '}

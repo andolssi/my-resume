@@ -20,6 +20,12 @@ const ContactForm = dynamic(() => import('@/components/ContactForm'), {
 const AboutMeCard = dynamic(() => import('@/components/AboutMeCard'), {
   ssr: false,
 });
+const DesignHighlights = dynamic(
+  () => import('@/components/DesignHighlights'),
+  {
+    ssr: false,
+  },
+);
 
 export default function Home() {
   const {
@@ -55,19 +61,20 @@ export default function Home() {
         <AboutMeCard />
       </section>
       <section
-        className="flex min-h-[80dvh] flex-col justify-center items-center scroll-mt-4"
+        className="flex flex-col justify-items-center w-full min-h-[80dvh] justify-center items-center scroll-mt-4"
         id="section-experience"
       >
         <Experience />
       </section>
       <section
-        className="flex min-h-[80dvh] flex-col justify-center items-center scroll-mt-4"
+        className="flex min-h-[80dvh] flex-col justify-center items-center scroll-mt-4 mb-4"
         id="section-portfolio"
       >
         <ProjectCards />
+        <DesignHighlights />
       </section>
       <section
-        className="flex min-h-[80dvh] justify-center items-center w-full"
+        className="flex min-h-[80dvh] justify-center items-center w-full dark:bg-slate-800/10"
         id="section-contact"
       >
         <ContactForm siteKey={siteKey} />
