@@ -8,7 +8,7 @@ const Experience = () => {
         Experience
       </h1>
       <div className="relative flex flex-col sm:flex-row mx-auto max-w-5xl w-[85%] sm:w-full lg:p-8 gap-3">
-        <div className="grid grid-cols-1 justify-items-center w-full gap-2 dark:text-stone-200 border-[1px] p-3 rounded-lg shadow-sm text-center sm:text-start">
+        <div className="flex flex-col justify-items-center w-full gap-4 dark:text-stone-200 border-[1px] p-3 rounded-lg shadow-sm text-center sm:text-start pb-8">
           <div className="relative w-full flex justify-center max-h-fit">
             <Image
               className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto w-2/12 rounded-md mx-3"
@@ -29,19 +29,17 @@ const Experience = () => {
               loading="lazy"
             />
           </div>
-          <h2 className="text-lg md:text-2xl font-semibold max-h-fit">
+          <h2 className="text-lg md:text-2xl font-semibold max-h-fit self-center">
             2016 - 2020
           </h2>
-          <div className="flex flex-row max-h-12">
-            <h3 className="text-sm md:text-base font-semibold">
+          <div className="flex flex-row max-h-12 w-full justify-between px-3">
+            <h3 className="text-sm md:text-sm font-semibold">
               Galactech - Awayzen Studio
             </h3>
             <div className="h-full w-[1px] bg-slate-400 mx-2" />
-            <h3 className="text-sm md:text-base font-semibold">
-              Tunis, Tunisia
-            </h3>
+            <h3 className="text-sm md:text-base font-semibold">Tunisia</h3>
           </div>
-          <div className="px-1 sm:px-5">
+          <div className="h-full content-center">
             At Galactech and Awayzen Studio, I worked as a 3D artist,
             supervising the entire process of creating 3D art for video games.
             My responsibilities included designing and modeling detailed 3D
@@ -53,7 +51,7 @@ const Experience = () => {
             assets in dynamic startup environments.
           </div>
         </div>
-        <div className="grid grid-cols-1 justify-items-center w-full gap-4 dark:text-stone-200 border-[1px] p-3 rounded-lg shadow-sm text-center sm:text-start">
+        <div className="flex flex-col justify-items-center w-full gap-4 dark:text-stone-200 border-[1px] p-3 rounded-lg shadow-sm text-center sm:text-start pb-8">
           <div className="relative w-full flex justify-center max-h-fit">
             <Image
               className="relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full h-auto w-2/12 rounded-md aspect-auto"
@@ -65,15 +63,15 @@ const Experience = () => {
               loading="lazy"
             />
           </div>
-          <h2 className="text-lg md:text-2xl font-semibold">2021 - 2024</h2>
-          <div className="flex flex-row">
+          <h2 className="text-lg md:text-2xl font-semibold self-center">
+            2021 - 2024
+          </h2>
+          <div className="flex flex-row w-full justify-between px-3">
             <h3 className="text-sm md:text-base font-semibold">eDonec</h3>
             <div className="h-full w-[1px] bg-slate-400 mx-2" />
-            <h3 className="text-sm md:text-base font-semibold">
-              Tunis, Tunisia
-            </h3>
+            <h3 className="text-sm md:text-base font-semibold">Tunisia</h3>
           </div>
-          <div className="px-1 sm:px-5 min-h-24">
+          <div className="min-h-24 h-full content-center">
             At Edonec, I worked as a Full Stack JavaScript Developer, gaining
             hands-on experience in building applications using the MERN stack
             and React Native. <br />I later transitioned to contributing to the
@@ -83,6 +81,31 @@ const Experience = () => {
             scalable and maintainable solutions. Working in a fast-paced startup
             environment, I developed a strong foundation in modern development
             practices and collaborative project delivery.
+          </div>
+        </div>
+        <div className="flex flex-col justify-items-center w-full gap-4 dark:text-stone-200 border-[1px] p-3 rounded-lg shadow-sm text-center sm:text-start pb-8">
+          <h1 className="text-2xl md:text-3xl font-bold text-center">
+            FREELANCE
+            <span className="text-3xl md:text-4xl font-black text-[--primary-color]">
+              .
+            </span>
+          </h1>
+          <h2 className="text-lg md:text-2xl font-semibold self-center">
+            2025
+          </h2>
+          <div className="flex flex-row w-full justify-between px-3">
+            <h3 className="text-sm md:text-base font-semibold">Freelance</h3>
+            <div className="h-full w-[1px] bg-slate-400 mx-2" />
+            <h3 className="text-sm md:text-base font-semibold">Worldwide</h3>
+          </div>
+          <div className="min-h-24 h-full content-center">
+            As a freelance Full Stack JavaScript developer and web designer, I
+            specialize in building scalable, user-friendly web applications and
+            crafting visually engaging designs. With a strong focus on user
+            experience (UX) and intuitive interfaces (UI),
+            <br />I deliver solutions that are not only functional but also
+            delightful to use, ensuring they meet both client goals and user
+            expectations.
           </div>
         </div>
       </div>
