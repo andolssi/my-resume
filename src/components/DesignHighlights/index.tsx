@@ -25,8 +25,6 @@ const DesignHighlights = () => {
   });
 
   const handleClick = () => {
-    console.log('Image clicked!');
-
     toast<string>('🤩Case Study Coming Soon!..', {
       autoClose: 2000,
       position: 'top-right',

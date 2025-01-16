@@ -7,6 +7,7 @@ import LandingPage from '@/components/LandingPage';
 import SocialMediaContact from '@/components/SocialMediaContact';
 import Loader from '@/components/Loader';
 import Footer from '@/components/Footer';
+import 'react-toastify/dist/ReactToastify.css';
 import usePage from './usePage';
 const ProjectCards = dynamic(() => import('@/components/ProjectCards'), {
   ssr: false,
