@@ -123,7 +123,6 @@ function usePage() {
                     end: 'bottom top',
                     scrub: 1,
                     toggleActions: 'play pause reverse pause',
-                    markers: true,
                 },
             });
 
