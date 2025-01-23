@@ -31,6 +31,11 @@ const ParticlesComponent = () => {
             onHover: {
               enable: true,
               mode: 'repulse',
+              parallax: {
+                enable: true,
+                force: 60,
+                smooth: 10,
+              },
             },
             resize: true,
           },
@@ -52,7 +57,7 @@ const ParticlesComponent = () => {
             color: theme === 'dark' ? '#526F9B' : '#ffba71',
             distance: 150,
             enable: true,
-            opacity: 0.5,
+            opacity: 0.3,
             width: 1,
           },
           move: {

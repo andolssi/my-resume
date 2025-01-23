@@ -51,12 +51,15 @@ export default function Home() {
         setIsMobile={setMobileNavbarIsOpen}
       />
       <SocialMediaContact />
-      <section className="flex min-h-screen relative" id="section-LandingPage">
+      <section
+        className="flex min-h-screen relative overflow-hidden"
+        id="section-LandingPage"
+      >
         <LandingPage />
       </section>
 
       <section
-        className="flex min-h-[80dvh] flex-col justify-center items-center scroll-mt-4"
+        className="flex min-h-[80dvh] flex-col justify-center items-center scroll-mt-4 mt-8"
         id="section-aboutMe"
       >
         <AboutMeCard />
