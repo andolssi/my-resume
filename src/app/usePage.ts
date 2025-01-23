@@ -114,7 +114,19 @@ function usePage() {
                     ease: 'expo.out',
                 },
                 '-=1.5'
-            );
+            ).to('.particales-container', {
+                yPercent: -5,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.particales-container',
+                    start: 'bottom bottom',
+                    end: 'bottom top',
+                    scrub: 1,
+                    toggleActions: 'play pause reverse pause',
+                    markers: true,
+                },
+            });
+
     });
 
     return ({

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import ParticlesComponent from '../ParticlesComponent';
 import { useTheme } from '@/components/ThemePreferenceProvider';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const LandingPage = () => {
   const [fadeOutClassName, setFadeOutClassName] = useState('');
@@ -26,8 +28,10 @@ const LandingPage = () => {
     <>
       <div
         className={`absolute top-0 left-0 h-full w-full ${
-          theme === 'dark' ? '' : 'bg-gradient-to-t from-white'
-        }`}
+          theme === 'dark'
+            ? 'bg-gradient-to-b from-[#111721] via-[#192230] to-[#111721]'
+            : 'bg-gradient-to-t from-white'
+        } particales-container scale-105`}
       >
         <ParticlesComponent />
       </div>
