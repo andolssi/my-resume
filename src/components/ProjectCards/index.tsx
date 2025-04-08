@@ -3,9 +3,27 @@ import React from 'react';
 import Card from '../Card';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const CARD_DATA = [
+  {
+    headLine: 'Dj Mayram',
+    subHeadLine: 'Dj Mayram website',
+    description:
+      'A personal website for DJ Mayram to showcase music, upcoming events, and social links. Built to reflect their unique style and musical identity.',
+    callToActionTitle: 'Visit',
+    imageSrc: 'djmayramScreenShot.avif',
+    link: 'https://djmayram.com/',
+    relatedTechnologies: [
+      'Figma',
+      'Lottiefiles',
+      'nextjs',
+      'React',
+      'GSAP',
+      'typescript',
+      'tailwindcss',
+      '...',
+    ],
+  },
   {
     headLine: 'Mpsy.tn',
     subHeadLine: 'Mental Wellness Platform',

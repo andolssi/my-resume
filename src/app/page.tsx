@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       <section
-        className="flex min-h-[80dvh] flex-col justify-center items-center scroll-mt-4 mt-8"
+        className="flex min-h-[80dvh] flex-col justify-center items-center scroll-mt-4"
         id="section-aboutMe"
       >
         <AboutMeCard />

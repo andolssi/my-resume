@@ -24,6 +24,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  scroll-behavior: smooth;
 }
 
 /* ************************************************* */
@@ -159,3 +160,13 @@ input[type='radio']:checked::before {
     fill: #091549;
   }
 }
+
+.magnet-button {
+  will-change: transform;
+  transform: translate3d(0, 0, 0); /* Hardware acceleration */
+}
+
+/* .demo-page .main-title:hover + .cursor {
+  width: 4rem !important;
+  height: 4rem !important;
+} */

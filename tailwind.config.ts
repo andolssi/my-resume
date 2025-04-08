@@ -16,6 +16,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-quicksand)'],
         mono: ['var(--font-source_Code_Pro)'],
+        alegreya: ['var(--font-alegreya)'],
       },
     },
   },

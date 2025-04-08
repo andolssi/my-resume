@@ -51,22 +51,15 @@ const AboutMeCard = () => {
             ABOUT ME
           </h1>
           <p className="pt-3 lg:w-3/4 w-4/5 text-sm dark:text-stone-200 overflow-hidden">
-            Highly motivated MERN Stack Developer (with Mobile Development
-            Experience) with 3+ years of experience building and maintaining
-            scalable web applications using the MERN stack and React Native.
+            With 10+ years in the digital world, I began as a 3D art director in
+            mobile games, blending visual storytelling with user psychology. My
+            journey led me to full-stack development in a tech startup, where my
+            artistic side naturally steered me toward UI/UX design.
             <br />
             <br />
-            My journey began in 2014, crafting worlds and characters as a 3d
-            artist. This honed my problem-solving, attention to detail, and
-            fast-paced work ethic. But the spark for code ignited with C#,
-            leading me to JavaScript, TypeScript, and React. <br />
-            <br />
-            Learning proved swift thanks to my analytical skills, landing me a
-            Full stack developer role at Edonec. <br />
-            <br />
-            Through hands-on projects, valuable feedback from my colleagues, and
-            constant practice, I improved my MERN-stack skills, and it gave me
-            the confidence to tackle any challenge.
+            Today, I focus on front-end development and UX/UI design, using my
+            creative and technical background to craft thoughtful, user-centered
+            digital experiences.
           </p>
 
           <p className="pb-2 pt-6 lg:w-3/4 w-4/5 text-xs dark:text-stone-300">
@@ -76,7 +69,7 @@ const AboutMeCard = () => {
           <button
             type="button"
             className="my-3 w-fit mx-1 md:mx-2 text-sm md:text-base bg-[--primary-color]
-       text-white rounded-md p-2 px-6 hover:border-black filter drop-shadow-lg dark:hover:bg-orange-50 dark:hover:text-[--primary-color]
+       text-white rounded-md p-2 px-6 py-2 hover:border-black filter drop-shadow-lg dark:hover:bg-orange-50 dark:hover:text-[--primary-color]
        hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium dark:text-stone-200"
           >
             <a href="mailto:andolsihoussemeddine@gmail.com">Hire Me</a>

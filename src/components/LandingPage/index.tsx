@@ -42,7 +42,7 @@ const LandingPage = () => {
               className={`${
                 theme === 'dark' ? 'hidden' : ''
               } "relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full md:max-w-md sm:max-w-md h-auto"`}
-              src="/Houssem-Eddine-Andolssi-light.webp"
+              src="/Houssem-Eddine-Andolssi-light.avif"
               alt="Houssem Eddine El Andolsi"
               width={454.8}
               height={396.2}
@@ -53,7 +53,7 @@ const LandingPage = () => {
               className={`${
                 theme === 'dark' ? '' : 'hidden'
               } "relative dark:drop-shadow-[0_0_0.2rem_#ffffff70] object-fill filter drop-shadow-lg max-w-full md:max-w-md sm:max-w-md h-auto"`}
-              src="/Houssem-Eddine-Andolssi-Dark.webp"
+              src="/Houssem-Eddine-Andolssi-Dark.avif"
               alt="Houssem Eddine El Andolsi"
               width={454.8}
               height={396.2}
@@ -67,27 +67,26 @@ const LandingPage = () => {
         </div>
         <div
           className={`relative flex flex-col justify-center items-center  
-    lg:items-start p-3 pt-0 mt-0 opacity-0 transition-opacity 
+    lg:items-start px-3 py-2 pt-0 mt-0 opacity-0 transition-opacity 
     duration-1000 ease-in-out delay-100 ${fadeOutClassName}`}
         >
           <h2 className="m-2 text-xl text-center lg:text-start font-sans font-light text-slate-700 dark:text-stone-200 description-landing-page">
-            Full Stack js developer & Web Designer
+            Front-end developer & UX/UI design
           </h2>
           <h1 className="m-10 lg:m-2 my-0 text-3xl md:text-4xl lg:text-5xl text-center lg:text-start font-sans font-semibold text-slate-700 dark:text-stone-200 description-landing-page">
             Hello, I'm{' '}
             <span className="text-[--primary-color] uppercase description-landing-page">
-              Houssem Eddine El Andolssi
+              Houssem Eddine El Andolsi
             </span>
           </h1>
           <h2 className="m-2 mt-1 lg:text-base md:text-sm text-center lg:text-start font-sans w-4/5 text-slate-700 dark:text-stone-200 description-landing-page">
-            Combining my creative soul with a developer's logic, I build
-            seamless web experiences that are both beautiful and powerful.
+            Turning Ideas Into Interactive, Visually Engaging Web Applications
           </h2>
           <div className="description-landing-page">
             <button
               type="button"
               className="my-5 w-fit mx-1 md:mx-2 text-xs md:text-base bg-[--primary-color]
-       text-white rounded-md p-3 hover:border-black filter drop-shadow-lg 
+       text-white rounded-md px-3 py-2 hover:border-black filter drop-shadow-lg 
        hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium dark:hover:bg-orange-50 dark:hover:text-[--primary-color]"
             >
               <a href="mailto:andolsihoussemeddine@gmail.com">Contact Me</a>
@@ -95,7 +94,7 @@ const LandingPage = () => {
 
             <button
               type="button"
-              className="my-4 w-fit mx-1 md:mx-2 py-3 px-4 border-[1px] text-xs md:text-base border-slate-700 dark:border-slate-200
+              className="my-4 w-fit mx-1 md:mx-2 px-3 py-2 border-[1px] text-xs md:text-base border-slate-700 dark:border-slate-200
        text-slate-600 dark:text-slate-200 rounded-md hover:border-black hover:text-black dark:hover:border-orange-400 dark:hover:text-orange-400 filter drop-shadow-lg 
        hover:translate-y-1 hover:scale-105 transition-all font-sans font-medium"
               onClick={handleScroll}
